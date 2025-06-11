@@ -1,28 +1,10 @@
-import { useState, useRef, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
 import privateersclubData from "../data/privateersclub.json";
 import wotakuData from "../data/wotaku.json";
-import GraphViewCanvas from "./components/GraphViewCanvas";
+import GraphViewCanvas from "./components/graph";
 import { useToggleReactScan } from "./components/react-scan";
 import { Spinner } from "./components/ui/spinner";
-
-interface Node {
-	id: string;
-	isExternal: boolean;
-	x?: number;
-	y?: number;
-	fx?: number;
-	fy?: number;
-}
-
-interface Link {
-	source: string | Node;
-	target: string | Node;
-}
-
-interface GraphData {
-	nodes: Node[];
-	links: Link[];
-}
+import type { Graph } from "./components/graph/types";
 
 const GRAPH_OPTIONS = [
 	{
@@ -38,7 +20,7 @@ const GRAPH_OPTIONS = [
 ];
 
 const useGraphData = (selectedGraph: string | null) => {
-	const [data, setData] = useState<GraphData | null>(null);
+	const [data, setData] = useState<Graph | null>(null);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState<string | null>(null);
 
@@ -46,7 +28,7 @@ const useGraphData = (selectedGraph: string | null) => {
 		if (!selectedGraph) return;
 		const fetchData = async () => {
 			try {
-				await new Promise((resolve) => setTimeout(resolve, 5000));
+				await new Promise((resolve) => setTimeout(resolve, 1000));
 				const graph = GRAPH_OPTIONS.find((g) => g.key === selectedGraph);
 				if (!graph) throw new Error("Graph not found");
 				setData(graph.data);
@@ -69,9 +51,9 @@ const App: React.FC = () => {
 	const [selectedGraph, setSelectedGraph] = useState<string | null>(null);
 	const { data, loading, error } = useGraphData(selectedGraph);
 	const [showInfo, setShowInfo] = useState(true);
-	const graphViewRef = useRef<{ recenter: () => void }>(null);
+	const [activeTab, setActiveTab] = useState<'legend' | 'controls' | 'developer'>('legend');
 
-	const [enabled, setEnabled] = useState(false);
+	const [enabled, setEnabled] = useState(true);
 	const { toggle } = useToggleReactScan({
 		mode: "controlled",
 		enabled,
@@ -84,7 +66,7 @@ const App: React.FC = () => {
 
 	if (!selectedGraph) {
 		return (
-			<div className="fixed inset-0 z-50 flex items-center justify-center bg-background/90 backdrop-blur-sm">
+			<div className="fixed inset-0 z-50 flex items-center justify-center bg-background">
 				<div className="relative w-full max-w-md mx-auto p-8 flex flex-col items-center gap-6">
 					<h2 className="text-xl text-foreground font-mono">vivivi</h2>
 
@@ -97,41 +79,42 @@ const App: React.FC = () => {
 					</div>
 
 					<div className="flex flex-col gap-2 w-full text-center">
-						{GRAPH_OPTIONS.map((opt, i) => (
+						{GRAPH_OPTIONS.map((opt) => (
 							<div key={opt.key} className="text-lg">
 								<button
 									onClick={() => setSelectedGraph(opt.key)}
 									className="appearance-none bg-transparent border-none p-0 m-0 text-white/70 hover:text-white underline transition-colors cursor-pointer"
 								>
-									{opt.name}
+									{opt.name} <span className="text-xs text-muted-foreground">({opt.data.nodesCount} nodes)</span>
 								</button>
 							</div>
 						))}
 					</div>
 				</div>
 				<footer className="absolute bottom-4 text-xs text-muted-foreground font-sans text-center w-full">
-  <p>
-    <a
-      href="https://github.com/taskylizard/vivivi"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="appearance-none text-white/70 hover:text-white underline transition-colors cursor-pointer"
-    >
-      source code
-    </a>{' '}
-    • built by <span className="font-semibold">taskylizard</span>
-  </p>
-</footer>
+					<p>
+						<a
+							href="https://github.com/taskylizard/vivivi"
+							target="_blank"
+							rel="noopener noreferrer"
+							className="appearance-none text-white/70 hover:text-white underline transition-colors cursor-pointer"
+						>
+							source code
+						</a>{" "}
+						• built by <span className="font-semibold">taskylizard</span>
+					</p>
+				</footer>
 			</div>
-
 		);
 	}
 	if (loading) {
 		return (
-			<div className="h-screen flex items-center justify-center dark">
-				<div className="text-center">
-					<Spinner size="sm" className="bg-black dark:bg-white" />
-					<p className="mt-4 text-muted-foreground">Loading graph data...</p>
+			<div className="fixed inset-0 z-50 flex items-center justify-center bg-background">
+				<div className="relative w-full max-w-md mx-auto p-8 flex flex-col items-center gap-6">
+					<Spinner size="lg" className="bg-black dark:bg-white" />
+					<p className="text-muted-foreground font-sans">
+						Loading graph data...
+					</p>
 				</div>
 			</div>
 		);
@@ -151,82 +134,97 @@ const App: React.FC = () => {
 	if (!data) return null;
 
 	return (
-		<div className="min-h-screen bg-dotted-[neutral-200/60] font-mono">
-			<GraphViewCanvas
-				ref={graphViewRef}
-				nodes={memoizedNodes}
-				links={memoizedLinks}
-			/>
+		<div className="min-h-screen bg-background font-mono">
+			<GraphViewCanvas nodes={memoizedNodes} links={memoizedLinks} />
 
+			{/* Tabbed Pane */}
 			<div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
 				{showInfo && (
 					<div className="w-72 bg-card/80 backdrop-blur border border-border rounded-xl shadow-2xl p-5 flex flex-col gap-4">
-						<div className="font-extrabold text-xl text-foreground mb-1">
-							Controls • Legend
+						<div className="flex gap-2 mb-2">
+							<button
+								className={`inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium bg-card transition-all border-none outline-none ${activeTab === 'legend' ? 'text-white' : 'text-muted-foreground hover:text-foreground hover:bg-muted'}`}
+								onClick={() => setActiveTab('legend')}
+							>
+								Legend
+							</button>
+							<button
+								className={`inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium bg-card transition-all border-none outline-none ${activeTab === 'controls' ? 'text-white' : 'text-muted-foreground hover:text-foreground hover:bg-muted'}`}
+								onClick={() => setActiveTab('controls')}
+							>
+								Controls
+							</button>
+							<button
+								className={`inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium bg-card transition-all border-none outline-none ${activeTab === 'developer' ? 'text-white' : 'text-muted-foreground hover:text-foreground hover:bg-muted'}`}
+								onClick={() => setActiveTab('developer')}
+							>
+								Developer
+							</button>
 						</div>
-						<div className="space-y-2">
-							<div className="flex items-center gap-2">
-								<span
-									className="inline-block w-5 h-5 rounded-full border-2"
-									style={{
-										background: "hsl(var(--primary))",
-										borderColor: "hsl(var(--primary-foreground))",
-										borderStyle: "solid",
-										borderWidth: "2px",
-									}}
-								></span>
-								<span className="text-base text-foreground">
-									Internal Markdown Node
-								</span>
+
+						{activeTab === 'legend' && (
+							<div className="space-y-2">
+								<div className="flex items-center gap-2">
+									<span
+										className="inline-block w-5 h-5 rounded-full border-2"
+										style={{
+											background: "hsl(var(--primary))",
+											borderColor: "hsl(var(--primary-foreground))",
+											borderStyle: "solid",
+											borderWidth: "2px",
+										}}
+									></span>
+									<span className="text-base text-foreground">
+										Internal Markdown Node
+									</span>
+								</div>
+								<div className="flex items-center gap-2">
+									<span
+										className="inline-block w-5 h-5 rounded-full border-2"
+										style={{
+											background: "hsl(var(--destructive))",
+											borderColor: "hsl(var(--destructive-foreground))",
+											borderStyle: "solid",
+											borderWidth: "2px",
+										}}
+									></span>
+									<span className="text-base text-foreground">
+										External Link Node
+									</span>
+								</div>
 							</div>
-							<div className="flex items-center gap-2">
-								<span
-									className="inline-block w-5 h-5 rounded-full border-2"
-									style={{
-										background: "hsl(var(--destructive))",
-										borderColor: "hsl(var(--destructive-foreground))",
-										borderStyle: "solid",
-										borderWidth: "2px",
-									}}
-								></span>
-								<span className="text-base text-foreground">
-									External Link Node
-								</span>
+						)}
+
+						{activeTab === 'controls' && (
+							<div className="space-y-2">
+								<div className="flex items-center gap-2">
+									<span className="text-lg">🔍</span>
+									<span className="text-base text-foreground">
+										Scroll to <b>zoom</b> in/out
+									</span>
+								</div>
+								<div className="flex items-center gap-2">
+									<span className="text-lg">✋</span>
+									<span className="text-base text-foreground">
+										Drag background to <b>pan</b>
+									</span>
+								</div>
+								<div className="flex items-center gap-2">
+									<span className="text-lg">🖱</span>
+									<span className="text-base text-foreground">
+										Drag node to reposition
+									</span>
+								</div>
 							</div>
-						</div>
-						<hr className="my-2 border-border" />
-						<div className="space-y-2">
-							<div className="flex items-center gap-2">
-								<span className="text-lg">🔍</span>
-								<span className="text-base text-foreground">
-									Scroll to <b>zoom</b> in/out
-								</span>
-							</div>
-							<div className="flex items-center gap-2">
-								<span className="text-lg">✋</span>
-								<span className="text-base text-foreground">
-									Drag background to <b>pan</b>
-								</span>
-							</div>
-							<div className="flex items-center gap-2">
-								<span className="text-lg">🖱</span>
-								<span className="text-base text-foreground">
-									Drag node to reposition
-								</span>
-							</div>
-						</div>
-						<hr className="my-2 border-border" />
-						<div className="space-y-2">
-							<div className="flex items-center gap-2">
-								<span className="text-lg">📋</span>
-								<button onClick={toggle}>
-									{enabled ? "Disable" : "Enable"} React Scan
+						)}
+
+						{activeTab === 'developer' && (
+							<div className="space-y-2">
+								<button className="text-sm text-muted-foreground hover:text-foreground bg-card px-2 py-1 rounded-md transition-all border-none outline-none" onClick={toggle}>
+									{enabled ? "Disable React Scan" : "Enable React Scan"}
 								</button>
-								<span className="text-base text-foreground">
-									Toggle <b>React Scan</b>
-								</span>
 							</div>
-						</div>
+						)}
 					</div>
 				)}
 				<button

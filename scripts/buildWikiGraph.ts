@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { glob } from "glob";
+import {  globSync } from "tinyglobby";
 import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -17,12 +17,26 @@ interface Link {
 interface GraphData {
 	nodes: Node[];
 	links: Link[];
+	nodesCount: number;
 }
 
-const IGNORED_DIRS = ["br", "es", "ro", "sandbox", "other", "posts"];
+const IGNORED_DIRS = [
+	"br",
+	"es",
+	"ro",
+	"sandbox",
+	"other",
+	"posts",
+	"node_modules",
+];
+
 const IGNORED_FILES = [
 	"index.md",
+	"sandbox.md",
+	"license.md",
+	"LICENSE.md",
 	"contribute.md",
+	"CONTRIBUTING.md",
 	"README.md",
 	"t.md",
 	"start.md",
@@ -33,12 +47,12 @@ const IGNORED_FILES = [
 
 function getMarkdownFiles(docsDir: string): string[] {
 	const pattern = path.join(docsDir, "**/*.md");
-	return glob.sync(pattern, {
+
+	return globSync(pattern, {
 		ignore: [
-			...IGNORED_DIRS.map((lang) => path.join(docsDir, lang, "**")),
+			...IGNORED_DIRS.map((folder) => path.join("**", folder)),
 			...IGNORED_FILES.map((file) => path.join(docsDir, "**", file)),
-		],
-		nodir: true,
+		]
 	});
 }
 
@@ -69,6 +83,9 @@ function resolveLocalLink(link: string): string | null {
 
 function buildGraph(docsDir: string, outputFile: string) {
 	const files = getMarkdownFiles(docsDir);
+	console.log(`\nFiles in ${docsDir}:`);
+	files.forEach(file => console.log(`- ${file}`));
+	
 	const fileNodes = new Set<string>();
 	const externalNodes = new Set<string>();
 	const links: Link[] = [];
@@ -100,15 +117,35 @@ function buildGraph(docsDir: string, outputFile: string) {
 		...Array.from(externalNodes).map((id) => ({ id, isExternal: true })),
 	];
 
-	const graph: GraphData = { nodes, links };
+	const graph: GraphData = { 
+		nodes, 
+		links,
+		nodesCount: nodes.length 
+	};
 	fs.writeFileSync(outputFile, JSON.stringify(graph, null, 2));
 	console.log(`Graph data written to ${outputFile}`);
+	console.log(`Total nodes: ${nodes.length}`);
 }
 
-if (!process.argv[2]) {
-	throw new Error("Please specify a docs directory as the first argument");
-}
-const docsDir = process.argv[2];
-const outputFile = process.argv[3] || path.join(__dirname, "./graph.json");
+const reposDir = path.join(__dirname, "../repos");
+const dataDir = path.join(__dirname, "../data");
 
-buildGraph(docsDir, outputFile);
+if (fs.existsSync(dataDir)) {
+    fs.rmSync(dataDir, { recursive: true });
+}
+fs.mkdirSync(dataDir);
+
+const repos = fs.readdirSync(reposDir, { withFileTypes: true })
+    .filter(dirent => dirent.isDirectory())
+    .map(dirent => dirent.name);
+
+for (const repo of repos) {
+    const docsDir = path.join(reposDir, repo);
+    const outputFile = path.join(dataDir, `${repo}.json`);
+    
+    try {
+        buildGraph(docsDir, outputFile);
+    } catch (error) {
+        console.error(`Error processing ${repo}:`, error);
+    }
+}
