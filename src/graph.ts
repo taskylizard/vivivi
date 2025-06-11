@@ -1,6 +1,6 @@
-import { remark } from "remark";
-import type { Root } from "mdast";
-import { visit } from "unist-util-visit";
+import type { Root } from 'mdast';
+import { remark } from 'remark';
+import { visit } from 'unist-util-visit';
 
 export type Input = {
   url: string;
@@ -104,7 +104,7 @@ function buildLink(input: Input, graph: Graph, addEdge: AddEdge = () => true) {
 
   remark()
     .use(() => (mdast: Root) => {
-      visit(mdast, "link", (node) => {
+      visit(mdast, 'link', (node) => {
         if (addEdge(node.url)) {
           graph.addEdge(input.url, node.url);
         }
