@@ -196,7 +196,7 @@ const GraphPage: React.FC<{ params: { graphId: string } }> = ({ params }) => {
 
       <div className='fixed bottom-6 right-6 z-50 flex flex-col items-end'>
         {showInfo && (
-          <Card className='w-72 backdrop-blur shadow-2xl'>
+          <Card className='w-72 shadow-lg'>
             <CardContent className='p-4'> {/* Adjusted padding */}
               <Tabs
                 defaultValue='info'
@@ -204,10 +204,25 @@ const GraphPage: React.FC<{ params: { graphId: string } }> = ({ params }) => {
                 onValueChange={(value) =>
                   setActiveTab(value as 'info' | 'developer' | 'graphs')}
               >
-                <TabsList className='grid w-full grid-cols-3 mb-4'>
-                  <TabsTrigger value='info'>Info</TabsTrigger>
-                  <TabsTrigger value='graphs'>Graphs</TabsTrigger>
-                  <TabsTrigger value='developer'>Developer</TabsTrigger>
+                <TabsList className='grid w-full grid-cols-3 mb-4 border-b border-border bg-transparent p-0'>
+                  <TabsTrigger
+                    value='info'
+                    className='bg-transparent text-muted-foreground data-[state=active]:text-foreground data-[state=active]:border-b-2 data-[state=active]:border-primary rounded-none px-1 pb-2 focus-visible:ring-0 focus-visible:ring-offset-0'
+                  >
+                    Info
+                  </TabsTrigger>
+                  <TabsTrigger
+                    value='graphs'
+                    className='bg-transparent text-muted-foreground data-[state=active]:text-foreground data-[state=active]:border-b-2 data-[state=active]:border-primary rounded-none px-1 pb-2 focus-visible:ring-0 focus-visible:ring-offset-0'
+                  >
+                    Graphs
+                  </TabsTrigger>
+                  <TabsTrigger
+                    value='developer'
+                    className='bg-transparent text-muted-foreground data-[state=active]:text-foreground data-[state=active]:border-b-2 data-[state=active]:border-primary rounded-none px-1 pb-2 focus-visible:ring-0 focus-visible:ring-offset-0'
+                  >
+                    Developer
+                  </TabsTrigger>
                 </TabsList>
                 <TabsContent value='info'>
                   <div className='space-y-4'>
