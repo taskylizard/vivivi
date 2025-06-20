@@ -7,6 +7,7 @@ import React, {
   useImperativeHandle,
   useRef,
 } from 'react';
+import { lime, red } from '@radix-ui/colors';
 import type { Graph, Node } from './types';
 
 const GraphViewCanvas = forwardRef<
@@ -61,8 +62,8 @@ const GraphViewCanvas = forwardRef<
     for (const node of nodePositions.current) {
       ctx.beginPath();
       ctx.arc(node.x ?? 0, node.y ?? 0, 10, 0, 2 * Math.PI);
-      ctx.fillStyle = node.isExternal ? '#F44336' : '#9EFD38';
-      ctx.strokeStyle = '#000000';
+      ctx.fillStyle = node.isExternal ? red.red9 : lime.lime9;
+      ctx.strokeStyle = '#FFFFFF';
       ctx.lineWidth = 2;
       ctx.fill();
       ctx.stroke();

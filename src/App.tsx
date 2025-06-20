@@ -16,6 +16,7 @@ import {
 } from '@/components/ui/card';
 import { Spinner } from '@/components/ui/spinner';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { exampleStyle } from '@/styles/example.css';
 
 const GRAPH_OPTIONS = [
   {
@@ -75,7 +76,9 @@ const HomePage: React.FC = () => {
       <div className='absolute inset-0 bg-black/40' />
 
       <div className='relative w-full max-w-md mx-auto p-8 flex flex-col items-center gap-6 z-10'>
-        <h2 className='text-xl text-foreground font-mono'>vivivi</h2>
+        <h2 className={`text-xl text-foreground font-mono ${exampleStyle}`}>
+          vivivi
+        </h2>
 
         <div className='text-center text-white/90 font-sans'>
           <p className='text-sm mb-2'>
@@ -106,7 +109,7 @@ const HomePage: React.FC = () => {
 
         <div className='flex flex-col gap-2 w-full text-center'>
           {GRAPH_OPTIONS.map((opt) => (
-            <div key={opt.key} className='text-lg'>
+            <div key={opt.key} className='text-base'>
               <button
                 onClick={() => setLocation(`/graph/${opt.key}`)}
                 className='appearance-none bg-transparent border-none p-0 m-0 text-white/70 hover:text-white underline transition-colors cursor-pointer'
@@ -185,7 +188,7 @@ const GraphPage: React.FC<{ params: { graphId: string } }> = ({ params }) => {
   if (!data) return null;
 
   return (
-    <div className='min-h-screen bg-background font-mono'>
+    <div className='min-h-screen bg-[var(--graph-background)] font-mono'>
       <ErrorBoundary>
         <GraphView
           ref={graphRef}
@@ -196,7 +199,7 @@ const GraphPage: React.FC<{ params: { graphId: string } }> = ({ params }) => {
 
       <div className='fixed bottom-6 right-6 z-50 flex flex-col items-end'>
         {showInfo && (
-          <Card className='w-72 shadow-lg font-sans bg-secondary text-secondary-foreground'>
+          <Card className='w-72 shadow-lg font-sans'>
             <CardContent className='pt-2 px-4 pb-4'> {/* Adjusted padding */}
               <Tabs
                 defaultValue='info'
@@ -235,8 +238,8 @@ const GraphPage: React.FC<{ params: { graphId: string } }> = ({ params }) => {
                           <span
                             className='inline-block w-5 h-5 rounded-full border-2'
                             style={{
-                              background: '#9EFD38',
-                              borderColor: '#000000',
+                              background: '#74B816', // lime.lime9
+                              borderColor: '#FFFFFF', // white
                               borderStyle: 'solid',
                               borderWidth: '2px',
                             }}
@@ -250,8 +253,8 @@ const GraphPage: React.FC<{ params: { graphId: string } }> = ({ params }) => {
                           <span
                             className='inline-block w-5 h-5 rounded-full border-2'
                             style={{
-                              background: '#F44336',
-                              borderColor: '#000000',
+                              background: '#E5484D', // red.red9
+                              borderColor: '#FFFFFF', // white
                               borderStyle: 'solid',
                               borderWidth: '2px',
                             }}
