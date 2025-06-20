@@ -213,17 +213,10 @@ const GraphViewCanvas = forwardRef<
       />
       {tooltip.visible && (
         <div
+          className="absolute pointer-events-none bg-popover text-popover-foreground shadow-md rounded-md px-3 py-1.5 text-sm z-10"
           style={{
-            position: 'absolute',
             left: tooltip.x + 10,
             top: tooltip.y - 10,
-            pointerEvents: 'none',
-            background: '#222',
-            color: '#fff',
-            padding: 6,
-            borderRadius: 6,
-            fontSize: 13,
-            zIndex: 10,
           }}
         >
           {tooltip.content}

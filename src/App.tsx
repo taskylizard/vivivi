@@ -5,7 +5,17 @@ import wotakuData from '../data/wotaku.json';
 import { ErrorBoundary } from './components/error-boundary';
 import GraphView from './components/graph';
 import type { Graph } from './components/graph/types';
-import { Spinner } from './components/ui/spinner';
+import { Button } from './components/ui/button';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { Spinner } from '@/components/ui/spinner';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const GRAPH_OPTIONS = [
   {
@@ -186,155 +196,140 @@ const GraphPage: React.FC<{ params: { graphId: string } }> = ({ params }) => {
 
       <div className='fixed bottom-6 right-6 z-50 flex flex-col items-end'>
         {showInfo && (
-          <div className='w-72 bg-card/80 backdrop-blur border border-border rounded-xl shadow-2xl p-5 flex flex-col gap-4'>
-            <div className='flex gap-2 mb-2'>
-              <button
-                className={`inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium bg-card transition-all border-none outline-none ${activeTab === 'info'
-                    ? 'text-white'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-muted'
-                  }`}
-                onClick={() => setActiveTab('info')}
+          <Card className='w-72 backdrop-blur shadow-2xl'>
+            <CardContent className='p-4'> {/* Adjusted padding */}
+              <Tabs
+                defaultValue='info'
+                value={activeTab}
+                onValueChange={(value) =>
+                  setActiveTab(value as 'info' | 'developer' | 'graphs')}
               >
-                Info
-              </button>
-              <button
-                className={`inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium bg-card transition-all border-none outline-none ${activeTab === 'graphs'
-                    ? 'text-white'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-muted'
-                  }`}
-                onClick={() => setActiveTab('graphs')}
-              >
-                Graphs
-              </button>
-              <button
-                className={`inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium bg-card transition-all border-none outline-none ${activeTab === 'developer'
-                    ? 'text-white'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-muted'
-                  }`}
-                onClick={() => setActiveTab('developer')}
-              >
-                Developer
-              </button>
-            </div>
-
-            {activeTab === 'info' && (
-              <div className='space-y-4'>
-                <div>
-                  <h4 className='text-sm font-semibold text-foreground mb-2'>
-                    Legend
-                  </h4>
-                  <div className='space-y-2'>
-                    <div className='flex items-center gap-2'>
-                      <span
-                        className='inline-block w-5 h-5 rounded-full border-2'
-                        style={{
-                          background: 'hsl(var(--primary))',
-                          borderColor: 'hsl(var(--primary-foreground))',
-                          borderStyle: 'solid',
-                          borderWidth: '2px',
-                        }}
-                      >
-                      </span>
-                      <span className='text-sm text-foreground'>
-                        Internal Markdown Node
-                      </span>
+                <TabsList className='grid w-full grid-cols-3 mb-4'>
+                  <TabsTrigger value='info'>Info</TabsTrigger>
+                  <TabsTrigger value='graphs'>Graphs</TabsTrigger>
+                  <TabsTrigger value='developer'>Developer</TabsTrigger>
+                </TabsList>
+                <TabsContent value='info'>
+                  <div className='space-y-4'>
+                    <div>
+                      <h4 className='text-sm font-semibold text-foreground mb-2'>
+                        Legend
+                      </h4>
+                      <div className='space-y-2'>
+                        <div className='flex items-center gap-2'>
+                          <span
+                            className='inline-block w-5 h-5 rounded-full border-2'
+                            style={{
+                              background: 'hsl(var(--primary))',
+                              borderColor: 'hsl(var(--primary-foreground))',
+                              borderStyle: 'solid',
+                              borderWidth: '2px',
+                            }}
+                          >
+                          </span>
+                          <span className='text-sm text-foreground'>
+                            Internal Markdown Node
+                          </span>
+                        </div>
+                        <div className='flex items-center gap-2'>
+                          <span
+                            className='inline-block w-5 h-5 rounded-full border-2'
+                            style={{
+                              background: 'hsl(var(--destructive))',
+                              borderColor:
+                                'hsl(var(--destructive-foreground))',
+                              borderStyle: 'solid',
+                              borderWidth: '2px',
+                            }}
+                          >
+                          </span>
+                          <span className='text-sm text-foreground'>
+                            External Link Node
+                          </span>
+                        </div>
+                      </div>
                     </div>
-                    <div className='flex items-center gap-2'>
-                      <span
-                        className='inline-block w-5 h-5 rounded-full border-2'
-                        style={{
-                          background: 'hsl(var(--destructive))',
-                          borderColor: 'hsl(var(--destructive-foreground))',
-                          borderStyle: 'solid',
-                          borderWidth: '2px',
-                        }}
-                      >
-                      </span>
-                      <span className='text-sm text-foreground'>
-                        External Link Node
-                      </span>
+
+                    <div>
+                      <h4 className='text-sm font-semibold text-foreground mb-2'>
+                        Controls
+                      </h4>
+                      <div className='space-y-2'>
+                        <div className='flex items-center gap-2'>
+                          <span className='text-lg'>🔍</span>
+                          <span className='text-sm text-foreground'>
+                            Scroll to <b>zoom</b> in/out
+                          </span>
+                        </div>
+                        <div className='flex items-center gap-2'>
+                          <span className='text-lg'>✋</span>
+                          <span className='text-sm text-foreground'>
+                            Drag background to <b>pan</b>
+                          </span>
+                        </div>
+                        <div className='flex items-center gap-2'>
+                          <span className='text-lg'>🖱</span>
+                          <span className='text-sm text-foreground'>
+                            Drag node to reposition
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-
-                <div>
-                  <h4 className='text-sm font-semibold text-foreground mb-2'>
-                    Controls
-                  </h4>
+                </TabsContent>
+                <TabsContent value='graphs'>
                   <div className='space-y-2'>
-                    <div className='flex items-center gap-2'>
-                      <span className='text-lg'>🔍</span>
-                      <span className='text-sm text-foreground'>
-                        Scroll to <b>zoom</b> in/out
-                      </span>
+                    <div className='text-xs text-muted-foreground mb-3'>
+                      Switch between available graphs:
                     </div>
-                    <div className='flex items-center gap-2'>
-                      <span className='text-lg'>✋</span>
-                      <span className='text-sm text-foreground'>
-                        Drag background to <b>pan</b>
-                      </span>
-                    </div>
-                    <div className='flex items-center gap-2'>
-                      <span className='text-lg'>🖱</span>
-                      <span className='text-sm text-foreground'>
-                        Drag node to reposition
-                      </span>
-                    </div>
+                    {GRAPH_OPTIONS.map((opt) => (
+                      <Button
+                        key={opt.key}
+                        variant={
+                          params.graphId === opt.key ? 'secondary' : 'ghost'
+                        }
+                        onClick={() => setLocation(`/graph/${opt.key}`)}
+                        className='w-full justify-between'
+                      >
+                        <div className='flex flex-col text-left'> {/* Ensure text aligns left */}
+                          <span className='text-sm font-medium'>
+                            {opt.name}
+                          </span>
+                          <span className='text-xs text-muted-foreground'>
+                            {opt.data.nodesCount} nodes
+                          </span>
+                        </div>
+                        {params.graphId === opt.key && (
+                          <span className='text-xs'>✓</span>
+                        )}
+                      </Button>
+                    ))}
                   </div>
-                </div>
-              </div>
-            )}
-
-            {activeTab === 'graphs' && (
-              <div className='space-y-2'>
-                <div className='text-xs text-muted-foreground mb-3'>
-                  Switch between available graphs:
-                </div>
-                {GRAPH_OPTIONS.map((opt) => (
-                  <button
-                    key={opt.key}
-                    onClick={() => setLocation(`/graph/${opt.key}`)}
-                    className={`w-full text-left px-3 py-2 rounded-md transition-all border-none outline-none flex items-center justify-between ${params.graphId === opt.key
-                        ? 'bg-primary/20 text-primary-foreground border border-primary/30'
-                        : 'bg-card hover:bg-muted text-muted-foreground hover:text-foreground'
-                      }`}
-                  >
-                    <div className='flex flex-col'>
-                      <span className='text-sm font-medium'>{opt.name}</span>
-                      <span className='text-xs text-muted-foreground'>
-                        {opt.data.nodesCount} nodes
-                      </span>
-                    </div>
-                    {params.graphId === opt.key && (
-                      <span className='text-xs'>✓</span>
-                    )}
-                  </button>
-                ))}
-              </div>
-            )}
-
-            {activeTab === 'developer' && (
-              <div className='space-y-2 flex flex-col gap-2'>
-                <button
-                  className='text-sm text-muted-foreground hover:text-foreground bg-card px-2 py-1 rounded-md transition-all border-none outline-none flex items-center gap-2'
-                  onClick={handleRecenter}
-                >
-                  <span className='text-lg'>🔄</span> Recenter
-                </button>
-              </div>
-            )}
-          </div>
+                </TabsContent>
+                <TabsContent value='developer'>
+                  <div className='space-y-2 flex flex-col gap-2'>
+                    <Button
+                      variant='outline'
+                      onClick={handleRecenter}
+                      className='w-full flex items-center gap-2'
+                    >
+                      <span className='text-lg'>🔄</span> Recenter
+                    </Button>
+                  </div>
+                </TabsContent>
+              </Tabs>
+            </CardContent>
+          </Card>
         )}
-        <button
-          className={`mb-2 px-4 py-2 rounded-full bg-card text-foreground transition-all border-none outline-none ${showInfo ? 'opacity-70' : 'opacity-100'
-            }`}
+        <Button
+          variant='outline'
+          size='sm'
           onClick={() => setShowInfo((v) => !v)}
           aria-label={showInfo ? 'Hide info panel' : 'Show info panel'}
+          className={showInfo ? "mt-2" : ""} // Add margin top if panel is shown
         >
-          {showInfo
-            ? <span className='font-semibold text-sm'>Hide</span>
-            : <span className='font-semibold text-sm'>Show</span>}
-        </button>
+          {showInfo ? 'Hide' : 'Show'}
+        </Button>
       </div>
     </div>
   );
