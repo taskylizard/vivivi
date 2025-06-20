@@ -5,7 +5,6 @@ import wotakuData from '../data/wotaku.json';
 import { ErrorBoundary } from './components/error-boundary';
 import GraphView from './components/graph';
 import type { Graph } from './components/graph/types';
-import { useToggleReactScan } from './components/react-scan';
 import { Spinner } from './components/ui/spinner';
 
 const GRAPH_OPTIONS = [
@@ -136,12 +135,6 @@ const GraphPage: React.FC<{ params: { graphId: string } }> = ({ params }) => {
     'info' | 'developer' | 'graphs'
   >('info');
 
-  const [enabled, setEnabled] = useState(true);
-  const { toggle } = useToggleReactScan({
-    mode: 'controlled',
-    enabled,
-    setEnabled,
-  });
 
   const [, setLocation] = useLocation();
 
@@ -196,31 +189,28 @@ const GraphPage: React.FC<{ params: { graphId: string } }> = ({ params }) => {
           <div className='w-72 bg-card/80 backdrop-blur border border-border rounded-xl shadow-2xl p-5 flex flex-col gap-4'>
             <div className='flex gap-2 mb-2'>
               <button
-                className={`inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium bg-card transition-all border-none outline-none ${
-                  activeTab === 'info'
+                className={`inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium bg-card transition-all border-none outline-none ${activeTab === 'info'
                     ? 'text-white'
                     : 'text-muted-foreground hover:text-foreground hover:bg-muted'
-                }`}
+                  }`}
                 onClick={() => setActiveTab('info')}
               >
                 Info
               </button>
               <button
-                className={`inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium bg-card transition-all border-none outline-none ${
-                  activeTab === 'graphs'
+                className={`inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium bg-card transition-all border-none outline-none ${activeTab === 'graphs'
                     ? 'text-white'
                     : 'text-muted-foreground hover:text-foreground hover:bg-muted'
-                }`}
+                  }`}
                 onClick={() => setActiveTab('graphs')}
               >
                 Graphs
               </button>
               <button
-                className={`inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium bg-card transition-all border-none outline-none ${
-                  activeTab === 'developer'
+                className={`inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium bg-card transition-all border-none outline-none ${activeTab === 'developer'
                     ? 'text-white'
                     : 'text-muted-foreground hover:text-foreground hover:bg-muted'
-                }`}
+                  }`}
                 onClick={() => setActiveTab('developer')}
               >
                 Developer
@@ -304,11 +294,10 @@ const GraphPage: React.FC<{ params: { graphId: string } }> = ({ params }) => {
                   <button
                     key={opt.key}
                     onClick={() => setLocation(`/graph/${opt.key}`)}
-                    className={`w-full text-left px-3 py-2 rounded-md transition-all border-none outline-none flex items-center justify-between ${
-                      params.graphId === opt.key
+                    className={`w-full text-left px-3 py-2 rounded-md transition-all border-none outline-none flex items-center justify-between ${params.graphId === opt.key
                         ? 'bg-primary/20 text-primary-foreground border border-primary/30'
                         : 'bg-card hover:bg-muted text-muted-foreground hover:text-foreground'
-                    }`}
+                      }`}
                   >
                     <div className='flex flex-col'>
                       <span className='text-sm font-medium'>{opt.name}</span>
@@ -328,13 +317,6 @@ const GraphPage: React.FC<{ params: { graphId: string } }> = ({ params }) => {
               <div className='space-y-2 flex flex-col gap-2'>
                 <button
                   className='text-sm text-muted-foreground hover:text-foreground bg-card px-2 py-1 rounded-md transition-all border-none outline-none flex items-center gap-2'
-                  onClick={toggle}
-                >
-                  <span className='text-lg'>🔍</span>
-                  {enabled ? ' Disable React Scan' : ' Enable React Scan'}
-                </button>
-                <button
-                  className='text-sm text-muted-foreground hover:text-foreground bg-card px-2 py-1 rounded-md transition-all border-none outline-none flex items-center gap-2'
                   onClick={handleRecenter}
                 >
                   <span className='text-lg'>🔄</span> Recenter
@@ -344,9 +326,8 @@ const GraphPage: React.FC<{ params: { graphId: string } }> = ({ params }) => {
           </div>
         )}
         <button
-          className={`mb-2 px-4 py-2 rounded-full bg-card text-foreground transition-all border-none outline-none ${
-            showInfo ? 'opacity-70' : 'opacity-100'
-          }`}
+          className={`mb-2 px-4 py-2 rounded-full bg-card text-foreground transition-all border-none outline-none ${showInfo ? 'opacity-70' : 'opacity-100'
+            }`}
           onClick={() => setShowInfo((v) => !v)}
           aria-label={showInfo ? 'Hide info panel' : 'Show info panel'}
         >
