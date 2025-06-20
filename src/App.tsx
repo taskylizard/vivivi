@@ -196,7 +196,7 @@ const GraphPage: React.FC<{ params: { graphId: string } }> = ({ params }) => {
 
       <div className='fixed bottom-6 right-6 z-50 flex flex-col items-end'>
         {showInfo && (
-          <Card className='w-72 shadow-lg font-sans'>
+          <Card className='w-72 shadow-lg font-sans bg-secondary text-secondary-foreground'>
             <CardContent className='pt-2 px-4 pb-4'> {/* Adjusted padding */}
               <Tabs
                 defaultValue='info'
@@ -235,8 +235,8 @@ const GraphPage: React.FC<{ params: { graphId: string } }> = ({ params }) => {
                           <span
                             className='inline-block w-5 h-5 rounded-full border-2'
                             style={{
-                              background: 'hsl(var(--primary))',
-                              borderColor: 'hsl(var(--primary-foreground))',
+                              background: '#9EFD38',
+                              borderColor: '#000000',
                               borderStyle: 'solid',
                               borderWidth: '2px',
                             }}
@@ -250,9 +250,8 @@ const GraphPage: React.FC<{ params: { graphId: string } }> = ({ params }) => {
                           <span
                             className='inline-block w-5 h-5 rounded-full border-2'
                             style={{
-                              background: 'hsl(var(--destructive))',
-                              borderColor:
-                                'hsl(var(--destructive-foreground))',
+                              background: '#F44336',
+                              borderColor: '#000000',
                               borderStyle: 'solid',
                               borderWidth: '2px',
                             }}
@@ -300,13 +299,11 @@ const GraphPage: React.FC<{ params: { graphId: string } }> = ({ params }) => {
                     {GRAPH_OPTIONS.map((opt) => (
                       <Button
                         key={opt.key}
-                        variant={params.graphId === opt.key ? undefined : 'ghost'}
+                        variant={
+                          params.graphId === opt.key ? 'secondary' : 'ghost'
+                        }
                         onClick={() => setLocation(`/graph/${opt.key}`)}
-                        className={`w-full justify-between py-2.5 h-auto ${
-                          params.graphId === opt.key
-                            ? 'bg-green-600 text-primary-foreground hover:bg-green-700'
-                            : ''
-                        }`}
+                        className='w-full justify-between py-2.5 h-auto'
                       >
                         <div className='flex flex-col text-left'> {/* Ensure text aligns left */}
                           <span className='text-sm font-medium'>
@@ -324,14 +321,20 @@ const GraphPage: React.FC<{ params: { graphId: string } }> = ({ params }) => {
                   </div>
                 </TabsContent>
                 <TabsContent value='developer'>
-                  <div className='space-y-2 flex flex-col gap-2'>
-                    <Button
-                      variant='outline'
-                      onClick={handleRecenter}
-                      className='w-full flex items-center gap-2'
-                    >
-                      <span className='text-lg'>🔄</span> Recenter
-                    </Button>
+                  <div className='space-y-3 flex flex-col'> {/* Kept flex-col for potential future items */}
+                    <div className='flex items-center gap-3'>
+                      <Button
+                        variant='outline'
+                        onClick={handleRecenter}
+                      >
+                        <span className='text-lg mr-2'>🔄</span>{/* Explicit margin for icon */}
+                        Recenter
+                      </Button>
+                      <span className='text-sm text-muted-foreground'>
+                        Recenter the graph view.
+                      </span>
+                    </div>
+                    {/* Other developer items could go here */}
                   </div>
                 </TabsContent>
               </Tabs>

@@ -36,12 +36,12 @@ const GraphViewCanvas = forwardRef<
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.translate(transformRef.current.x, transformRef.current.y);
     ctx.scale(transformRef.current.k, transformRef.current.k);
-    const getVar = (v: string) =>
-      getComputedStyle(document.documentElement).getPropertyValue(v).trim();
-    const primary = getVar('--primary') || '#2563eb';
-    const primaryFg = getVar('--primary-foreground') || '#fff';
-    const destructive = getVar('--destructive') || '#e11d48';
-    const destructiveFg = getVar('--destructive-foreground') || '#fff';
+    // const getVar = (v: string) =>
+    //   getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+    // const primary = getVar('--primary') || '#2563eb';
+    // const primaryFg = getVar('--primary-foreground') || '#fff';
+    // const destructive = getVar('--destructive') || '#e11d48';
+    // const destructiveFg = getVar('--destructive-foreground') || '#fff';
     ctx.strokeStyle = '#aaa';
     ctx.globalAlpha = 0.7;
     for (const link of links) {
@@ -61,12 +61,8 @@ const GraphViewCanvas = forwardRef<
     for (const node of nodePositions.current) {
       ctx.beginPath();
       ctx.arc(node.x ?? 0, node.y ?? 0, 10, 0, 2 * Math.PI);
-      ctx.fillStyle = node.isExternal
-        ? `hsl(${destructive})`
-        : `hsl(${primary})`;
-      ctx.strokeStyle = node.isExternal
-        ? `hsl(${destructiveFg})`
-        : `hsl(${primaryFg})`;
+      ctx.fillStyle = node.isExternal ? '#F44336' : '#9EFD38';
+      ctx.strokeStyle = '#000000';
       ctx.lineWidth = 2;
       ctx.fill();
       ctx.stroke();
