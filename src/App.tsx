@@ -196,15 +196,15 @@ const GraphPage: React.FC<{ params: { graphId: string } }> = ({ params }) => {
 
       <div className='fixed bottom-6 right-6 z-50 flex flex-col items-end'>
         {showInfo && (
-          <Card className='w-72 shadow-lg'>
-            <CardContent className='p-4'> {/* Adjusted padding */}
+          <Card className='w-72 shadow-lg font-sans'>
+            <CardContent className='pt-2 px-4 pb-4'> {/* Adjusted padding */}
               <Tabs
                 defaultValue='info'
                 value={activeTab}
                 onValueChange={(value) =>
                   setActiveTab(value as 'info' | 'developer' | 'graphs')}
               >
-                <TabsList className='grid w-full grid-cols-3 mb-4 border-b border-border bg-transparent p-0'>
+                <TabsList className='grid w-full grid-cols-3 mb-4 border-b border-border bg-transparent p-0 gap-x-2'>
                   <TabsTrigger
                     value='info'
                     className='bg-transparent text-muted-foreground data-[state=active]:text-foreground data-[state=active]:border-b-2 data-[state=active]:border-primary rounded-none px-1 pb-2 focus-visible:ring-0 focus-visible:ring-offset-0'
@@ -300,11 +300,13 @@ const GraphPage: React.FC<{ params: { graphId: string } }> = ({ params }) => {
                     {GRAPH_OPTIONS.map((opt) => (
                       <Button
                         key={opt.key}
-                        variant={
-                          params.graphId === opt.key ? 'secondary' : 'ghost'
-                        }
+                        variant={params.graphId === opt.key ? undefined : 'ghost'}
                         onClick={() => setLocation(`/graph/${opt.key}`)}
-                        className='w-full justify-between'
+                        className={`w-full justify-between py-2.5 h-auto ${
+                          params.graphId === opt.key
+                            ? 'bg-green-600 text-primary-foreground hover:bg-green-700'
+                            : ''
+                        }`}
                       >
                         <div className='flex flex-col text-left'> {/* Ensure text aligns left */}
                           <span className='text-sm font-medium'>
