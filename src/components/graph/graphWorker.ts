@@ -1,52 +1,55 @@
 import {
-  forceCenter,
+  forceSimulation,
   forceLink,
   forceManyBody,
-  forceSimulation,
-  type Simulation,
+  forceCenter,
   type SimulationNodeDatum,
+  type SimulationLinkDatum,
 } from 'd3-force';
-import type { Link, Node } from './types';
 
-let simulation: Simulation<Node, undefined> | null = null;
-let nodeData: Node[] = [];
+interface Node extends SimulationNodeDatum {
+  id: string;
+  isExternal: boolean;
+}
 
-self.onmessage = (e: MessageEvent) => {
-  const { type, nodes, links, nodeId, x, y } = e.data;
-  if (type === 'init') {
-    if (simulation) simulation.stop();
-    nodeData = nodes.map((n: Node) => ({ ...n }));
-    const linkData: { source: string | Node; target: string | Node }[] = links
-      .map((l: Link) => ({ ...l }));
-    simulation = forceSimulation(nodeData)
-      .force(
-        'link',
-        forceLink(linkData)
-          .id((d: SimulationNodeDatum) => (d as Node).id),
-      )
-      .force('charge', forceManyBody().strength(-200))
-      .force('center', forceCenter(0, 0))
-      .on('tick', () => {
-        self.postMessage({
-          type: 'tick',
-          nodes: nodeData.map((n) => ({ ...n })),
-        });
+interface Link extends SimulationLinkDatum<Node> {
+  source: string | Node;
+  target: string | Node;
+}
+
+let simulation: ReturnType<typeof forceSimulation<Node, Link>> | null = null;
+
+self.onmessage = (
+  // nodeId, x, y are no longer used in any message type
+  e: MessageEvent<{ type: string; nodes?: Node[]; links?: Link[] }>,
+) => {
+  switch (e.data.type) {
+    case 'init': {
+      const { nodes, links } = e.data;
+      if (!nodes || !links) return;
+
+      simulation = forceSimulation<Node, Link>(nodes)
+        .force('link', forceLink<Node, Link>(links).id((d) => d.id).distance(50))
+        .force('charge', forceManyBody().strength(-300))
+        .force('center', forceCenter(self.innerWidth / 2, self.innerHeight / 2).strength(0.1));
+
+      // Run simulation for a fixed number of ticks to stabilize layout
+      const numTicks = 300; // Adjust as needed
+      for (let i = 0; i < numTicks; ++i) {
+        simulation.tick();
+      }
+
+      // Fix node positions
+      nodes.forEach(node => {
+        node.fx = node.x;
+        node.fy = node.y;
       });
-  } else if (type === 'drag') {
-    if (!simulation) return;
-    const node = nodeData.find((n) => n.id === nodeId);
-    if (node) {
-      node.fx = x;
-      node.fy = y;
-      simulation.alphaTarget(0.3).restart();
+
+      // Send final positions
+      self.postMessage({ type: 'layoutComplete', nodes });
+      // simulation.stop(); // Not strictly necessary as it will be idle.
+      break;
     }
-  } else if (type === 'dragEnd') {
-    if (!simulation) return;
-    const node = nodeData.find((n) => n.id === nodeId);
-    if (node) {
-      node.fx = undefined;
-      node.fy = undefined;
-      simulation.alphaTarget(0);
-    }
+    // Drag messages (drag, dragEnd) were removed as dragging is disabled.
   }
 };
