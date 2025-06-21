@@ -38,11 +38,16 @@ const GraphViewCanvas = forwardRef<
     ctx.scale(transformRef.current.k, transformRef.current.k);
     const getVar = (v: string) =>
       getComputedStyle(document.documentElement).getPropertyValue(v).trim();
-    const primary = getVar('--primary') || '#2563eb';
-    const primaryFg = getVar('--primary-foreground') || '#fff';
-    const destructive = getVar('--destructive') || '#e11d48';
-    const destructiveFg = getVar('--destructive-foreground') || '#fff';
-    ctx.strokeStyle = '#aaa';
+    const primary = getVar('--primary-9') || new Error('primary not found');
+    const primaryFg = getVar('--primary-11') ||
+      new Error('primaryFg not found');
+    const destructive = getVar('--danger-9') ||
+      new Error('destructive not found');
+    const destructiveFg = getVar('--danger-11') ||
+      new Error('destructiveFg not found');
+    const stroke = getVar('--neutral-12') || new Error('stroke not found');
+
+    ctx.strokeStyle = `rgb(${stroke})`;
     ctx.globalAlpha = 0.7;
     for (const link of links) {
       const source = typeof link.source === 'object'
@@ -62,11 +67,11 @@ const GraphViewCanvas = forwardRef<
       ctx.beginPath();
       ctx.arc(node.x ?? 0, node.y ?? 0, 10, 0, 2 * Math.PI);
       ctx.fillStyle = node.isExternal
-        ? `hsl(${destructive})`
-        : `hsl(${primary})`;
+        ? `rgb(${destructive})`
+        : `rgb(${primary})`;
       ctx.strokeStyle = node.isExternal
-        ? `hsl(${destructiveFg})`
-        : `hsl(${primaryFg})`;
+        ? `rgb(${destructiveFg})`
+        : `rgb(${primaryFg})`;
       ctx.lineWidth = 2;
       ctx.fill();
       ctx.stroke();
@@ -218,8 +223,9 @@ const GraphViewCanvas = forwardRef<
             left: tooltip.x + 10,
             top: tooltip.y - 10,
             pointerEvents: 'none',
-            background: '#222',
-            color: '#fff',
+            background: `rgb(var(--neutral-4))`,
+            color: `rgb(var(--neutral-12))`,
+            fontFamily: 'var(--font-sans)',
             padding: 6,
             borderRadius: 6,
             fontSize: 13,
