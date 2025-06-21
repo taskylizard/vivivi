@@ -1,23 +1,24 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Route, Switch, useLocation } from 'wouter';
-import privateersclubData from '../data/privateersclub.json';
-import wotakuData from '../data/wotaku.json';
+// import privateersclubData from '../data/privateersclub.json'; // Removed for lazy loading
+// import wotakuData from '../data/wotaku.json'; // Removed for lazy loading
 import { ErrorBoundary } from './components/error-boundary';
 import GraphView from './components/graph';
 import type { Graph } from './components/graph/types';
-import { useToggleReactScan } from './components/react-scan';
 import { ThemeToggle } from './components/theme-toggle';
 
 const GRAPH_OPTIONS = [
   {
     key: 'privateersclub',
     name: 'privateersclub',
-    data: privateersclubData,
+    // data: privateersclubData, // Removed for lazy loading
+    nodesCount: 250, // Placeholder, ideally this would be dynamically determined or pre-calculated
   },
   {
     key: 'wotaku',
     name: 'Wotaku',
-    data: wotakuData,
+    // data: wotakuData, // Removed for lazy loading
+    nodesCount: 100, // Placeholder
   },
 ];
 
@@ -27,23 +28,44 @@ const useGraphData = (selectedGraph: string | null) => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!selectedGraph) return;
+    if (!selectedGraph) {
+      setLoading(false);
+      setData(null);
+      return;
+    }
+
+    let isMounted = true;
     const fetchData = async () => {
+      setLoading(true);
+      setError(null);
+      setData(null);
       try {
-        await new Promise((resolve) => setTimeout(resolve, 1_000));
-        const graph = GRAPH_OPTIONS.find((g) => g.key === selectedGraph);
-        if (!graph) throw new Error('Graph not found');
-        setData(graph.data as unknown as Graph);
+        // Simulate network delay if needed, or remove
+        // await new Promise((resolve) => setTimeout(resolve, 1_000));
+        const graphModule = await import(`../data/${selectedGraph}.json`);
+        if (isMounted) {
+          setData(graphModule.default as unknown as Graph);
+        }
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Unknown error');
+        if (isMounted) {
+          setError(
+            err instanceof Error
+              ? `Failed to load graph: ${err.message}`
+              : 'Unknown error loading graph',
+          );
+        }
       } finally {
-        setLoading(false);
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     };
-    setLoading(true);
-    setError(null);
-    setData(null);
+
     fetchData();
+
+    return () => {
+      isMounted = false;
+    };
   }, [selectedGraph]);
 
   return { data, loading, error };
@@ -95,7 +117,7 @@ const HomePage: React.FC = () => {
               >
                 {opt.name}{' '}
                 <span className='text-xs text-neutral-10'>
-                  ({opt.data.nodesCount} nodes)
+                  ({opt.nodesCount} nodes)
                 </span>
               </button>
             </div>
@@ -126,13 +148,6 @@ const GraphPage: React.FC<{ params: { graphId: string } }> = ({ params }) => {
     'info' | 'developer' | 'graphs'
   >('info');
 
-  const [enabled, setEnabled] = useState(true);
-  const { toggle } = useToggleReactScan({
-    mode: 'controlled',
-    enabled,
-    setEnabled,
-  });
-
   const [, setLocation] = useLocation();
 
   const graphRef = useRef<{ recenter: () => void }>(null);
@@ -142,7 +157,8 @@ const GraphPage: React.FC<{ params: { graphId: string } }> = ({ params }) => {
   };
 
   const handleCrash = () => {
-    throw new Error('oooooooooooooooooooops');
+    // Cause an application-level error to be caught by the ErrorBoundary
+    throw new Error('Controlled application crash for development testing');
   };
 
   // avoid unnecessary re-renders
@@ -186,6 +202,9 @@ const GraphPage: React.FC<{ params: { graphId: string } }> = ({ params }) => {
       </ErrorBoundary>
 
       <div className='font-sans! fixed bottom-6 right-6 z-50 flex flex-col items-end'>
+        <div className='absolute top-0 right-12 mr-2 mt-1'> {/* Adjusted positioning */}
+          <ThemeToggle />
+        </div>
         {showInfo && (
           <div className='w-72 bg-neutral-3/75 backdrop-blur-md border border-neutral-7 border-2 rounded-xl p-5 flex flex-col gap-4'>
             <div className='flex gap-2 mb-2'>
@@ -307,7 +326,7 @@ const GraphPage: React.FC<{ params: { graphId: string } }> = ({ params }) => {
                     <div className='flex flex-col'>
                       <span className='text-sm font-medium'>{opt.name}</span>
                       <span className='text-xs text-neutral-11'>
-                        {opt.data.nodesCount} nodes
+                        {opt.nodesCount} nodes {/* Ensure this uses the placeholder from GRAPH_OPTIONS */}
                       </span>
                     </div>
                     {params.graphId === opt.key && (
@@ -322,13 +341,6 @@ const GraphPage: React.FC<{ params: { graphId: string } }> = ({ params }) => {
               <div className='space-y-2 flex flex-col gap-2'>
                 <button
                   className='text-sm text-neutral-11 hover:text-neutral-12 bg-neutral-3 px-2 py-1 rounded-md transition-all border-none outline-none flex items-center gap-2'
-                  onClick={toggle}
-                >
-                  <span className='text-lg'>🔍</span>
-                  {enabled ? ' Disable React Scan' : ' Enable React Scan'}
-                </button>
-                <button
-                  className='text-sm text-neutral-11 hover:text-neutral-12 bg-neutral-3 px-2 py-1 rounded-md transition-all border-none outline-none flex items-center gap-2'
                   onClick={handleRecenter}
                 >
                   <span className='text-lg'>🔄</span> Recenter
@@ -339,16 +351,23 @@ const GraphPage: React.FC<{ params: { graphId: string } }> = ({ params }) => {
                 >
                   <span className='text-lg'>🚫</span> Crash the graph
                 </button>
-
-                <ThemeToggle />
               </div>
             )}
+            {/* Theme toggle moved from here */}
           </div>
         )}
-        <button
-          className={`mb-2 px-4 py-2 rounded-full bg-neutral-3 text-neutral-12 transition-all border-none outline-none ${
-            showInfo ? 'opacity-70' : 'opacity-100'
-          }`}
+        <div className="flex items-center gap-2"> {/* Container for buttons */}
+          <button
+            onClick={() => setLocation('/')}
+            className='mb-2 px-4 py-2 rounded-full bg-neutral-3 text-neutral-12 transition-all border-none outline-none opacity-70 hover:opacity-100'
+            aria-label="Go to Home Page"
+          >
+            <span className='font-semibold text-sm'>Home</span>
+          </button>
+          <button
+            className={`mb-2 px-4 py-2 rounded-full bg-neutral-3 text-neutral-12 transition-all border-none outline-none ${
+              showInfo ? 'opacity-70' : 'opacity-100'
+            }`}
           onClick={() => setShowInfo((v) => !v)}
           aria-label={showInfo ? 'Hide info panel' : 'Show info panel'}
         >
