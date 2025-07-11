@@ -23,7 +23,7 @@ import {
   useRef,
   useState,
 } from 'react';
-import type { Graph } from './types';
+import type { Graph as GraphViewer } from './types';
 
 export interface D3Config {
   drag: boolean;
@@ -106,7 +106,7 @@ async function determineGraphicsAPI(): Promise<'webgpu' | 'webgl'> {
   return webglMaxTextures === webgpuMaxTextures ? 'webgpu' : 'webgl';
 }
 
-interface QuartzGraphProps extends Graph {
+interface QuartzGraphProps extends GraphViewer {
   config?: Partial<D3Config>;
   onNodeClick?: (nodeId: string) => void;
 }
@@ -127,7 +127,7 @@ const defaultConfig: D3Config = {
   enableRadial: true,
 };
 
-const QuartzGraph = forwardRef<{ recenter: () => void }, QuartzGraphProps>(
+const GraphViewer = forwardRef<{ recenter: () => void }, QuartzGraphProps>(
   ({ nodes, links, config = {}, onNodeClick }, ref) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const [isInitialized, setIsInitialized] = useState(false);
@@ -781,4 +781,4 @@ const QuartzGraph = forwardRef<{ recenter: () => void }, QuartzGraphProps>(
   },
 );
 
-export default QuartzGraph;
+export default GraphViewer;
