@@ -8,12 +8,19 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 interface Node {
   id: string;
   isExternal: boolean;
+  text?: string; // Add text field for display purposes
 }
 
 interface Link {
   source: string;
   target: string;
 }
+
+interface ExtractedLink {
+  text: string;
+  url: string;
+}
+
 interface GraphData {
   nodes: Node[];
   links: Link[];
@@ -56,13 +63,19 @@ function getMarkdownFiles(docsDir: string): string[] {
   });
 }
 
-function extractLinks(content: string): string[] {
-  // Matches [text](link)
-  const regex = /\[[^\]]*\]\(([^)]+)\)/g;
-  const links: string[] = [];
+function extractLinks(content: string): ExtractedLink[] {
+  // Matches [text](link) including those wrapped in bold **[text](link)**
+  const regex = /\*{0,2}\[([^\]]*)\]\(([^)]+)\)\*{0,2}/g;
+  const links: ExtractedLink[] = [];
   let match;
   while ((match = regex.exec(content))) {
-    links.push(match[1]);
+    const text = match[1] || match[2]; // Use link text, fallback to URL
+    // Strip any remaining asterisks from the text
+    const cleanText = text.replace(/^\*+|\*+$/g, '');
+    links.push({
+      text: cleanText,
+      url: match[2],
+    });
   }
   return links;
 }
@@ -87,7 +100,7 @@ function buildGraph(docsDir: string, outputFile: string) {
   files.forEach(file => console.log(`- ${file}`));
 
   const fileNodes = new Set<string>();
-  const externalNodes = new Set<string>();
+  const externalNodes = new Map<string, string>(); // Map URL to text
   const links: Link[] = [];
 
   const fileBasenames = new Set(files.map((f) => path.basename(f)));
@@ -98,13 +111,13 @@ function buildGraph(docsDir: string, outputFile: string) {
     const content = fs.readFileSync(file, 'utf-8');
     const foundLinks = extractLinks(content);
     for (const link of foundLinks) {
-      if (/^https?:/.test(link)) {
+      if (/^https?:/.test(link.url)) {
         // External link
-        externalNodes.add(link);
-        links.push({ source: fileId, target: link });
+        externalNodes.set(link.url, link.text);
+        links.push({ source: fileId, target: link.url });
       } else {
         // Local link
-        const resolved = resolveLocalLink(link);
+        const resolved = resolveLocalLink(link.url);
         if (resolved && fileBasenames.has(resolved)) {
           links.push({ source: fileId, target: resolved });
         }
@@ -114,7 +127,11 @@ function buildGraph(docsDir: string, outputFile: string) {
 
   const nodes: Node[] = [
     ...Array.from(fileNodes).map((id) => ({ id, isExternal: false })),
-    ...Array.from(externalNodes).map((id) => ({ id, isExternal: true })),
+    ...Array.from(externalNodes.entries()).map(([id, text]) => ({
+      id,
+      isExternal: true,
+      text,
+    })),
   ];
 
   const graph: GraphData = {

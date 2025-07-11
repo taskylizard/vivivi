@@ -1,6 +1,7 @@
 export interface Node {
   id: string;
   isExternal: boolean;
+  text?: string; // Optional text field for display purposes
   x?: number;
   y?: number;
   fx?: number;

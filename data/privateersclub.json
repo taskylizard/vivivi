@@ -34,1331 +34,1663 @@
     },
     {
       "id": "https://cs.rin.ru/forum",
-      "isExternal": true
+      "isExternal": true,
+      "text": "CS.RIN.RU"
     },
     {
       "id": "https://github.com/SubZeroPL/cs-rin-ru-enhanced-mod",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Enhancement mod"
     },
     {
       "id": "https://steamgg.net",
-      "isExternal": true
+      "isExternal": true,
+      "text": ":star2: SteamGG"
     },
     {
       "id": "https://steamrip.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": ":star2: SteamRIP"
     },
     {
       "id": "https://ankergames.net",
-      "isExternal": true
+      "isExternal": true,
+      "text": ":star2: AnkerGames"
     },
     {
       "id": "https://gamebounty.world",
-      "isExternal": true
+      "isExternal": true,
+      "text": ":star2: Game Bounty"
     },
     {
       "id": "https://gog-games.to",
-      "isExternal": true
+      "isExternal": true,
+      "text": ":star2: GOG Games"
     },
     {
       "id": "https://freegogpcgames.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Torrents"
     },
     {
       "id": "https://worldofpcgames.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "World of PC Games"
     },
     {
       "id": "https://www.cg-gamespc.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "CG-gamesPC"
     },
     {
       "id": "https://gamedrive.org",
-      "isExternal": true
+      "isExternal": true,
+      "text": "GameDrive"
     },
     {
       "id": "https://www.ovagames.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Ova Games"
     },
     {
       "id": "https://gload.to/pc",
-      "isExternal": true
+      "isExternal": true,
+      "text": "GLOAD"
     },
     {
       "id": "https://scnlog.me/games",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Scnlog"
     },
     {
       "id": "https://gamdie.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Gamdie"
     },
     {
       "id": "https://appnetica.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Appnetica"
     },
     {
       "id": "https://rentry.co/god_csrinru",
-      "isExternal": true
+      "isExternal": true,
+      "text": "DigitalZone"
     },
     {
       "id": "https://atopgames.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "AtopGames"
     },
     {
       "id": "http://www.leechinghell.pw",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Leechinghell"
     },
     {
       "id": "https://wendysforum.net/index.php",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Wendy's Forum"
     },
     {
       "id": "https://iphonecake.com/index.php?device=0&p=1&c=8",
-      "isExternal": true
+      "isExternal": true,
+      "text": "AppCake"
     },
     {
       "id": "https://nmac.to/category/games",
-      "isExternal": true
+      "isExternal": true,
+      "text": "NMac"
     },
     {
       "id": "https://www.macbed.com/games",
-      "isExternal": true
+      "isExternal": true,
+      "text": "AppKed"
     },
     {
       "id": "https://cmacked.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Cmacked"
     },
     {
       "id": "https://t.me/ARMGDDNGames",
-      "isExternal": true
+      "isExternal": true,
+      "text": "ARMGDDN Games"
     },
     {
       "id": "https://cs.rin.ru/forum/viewtopic.php?f=14&t=140593",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Browser"
     },
     {
       "id": "https://www.myabandonware.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "My Abandonware"
     },
     {
       "id": "https://www.old-games.ru/catalog/",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Old-Games.RU"
     },
     {
       "id": "https://f95zone.to",
-      "isExternal": true
+      "isExternal": true,
+      "text": "F95zone"
     },
     {
       "id": "https://repacklab.com/",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Repacklab"
     },
     {
       "id": "https://archive.org/details/softwarelibrary_msdos_games?and[]=mediatype%3A%22software%22",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Software Library: MS-DOS Games"
     },
     {
       "id": "https://prismlauncher.org",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Prism Launcher"
     },
     {
       "id": "https://github.com/antunnitraj/Prism-Launcher-PolyMC-Offline-Bypass",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Play without a legit account"
     },
     {
       "id": "https://moriyashrine.org",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Moriya Shrine"
     },
     {
       "id": "https://1337x.to/sub/10/0/",
-      "isExternal": true
+      "isExternal": true,
+      "text": "1337x"
     },
     {
       "id": "https://www.reddit.com/r/Piracy/comments/nudfgn/me_after_reading_the_megathread/h0yr0q6/?context=3",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Safe uploaders (except FileCR)"
     },
     {
       "id": "https://greasyfork.org/scripts/33379-1337x-torrent-page-improvements",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Interface improvements"
     },
     {
       "id": "https://greasyfork.org/scripts/420754-1337x-torrent-and-magnet-links",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Magnet links"
     },
     {
       "id": "https://greasyfork.org/scripts/421635-1337x-convert-torrent-timestamps-to-relative-format",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Timezone fix"
     },
     {
       "id": "https://greasyfork.org/scripts/29467-1337x-subtitle-download-links-to-tv-and-movie-torrents",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Subtitle links to movies & TV"
     },
     {
       "id": "https://rutracker.org/forum/index.php?c=19",
-      "isExternal": true
+      "isExternal": true,
+      "text": "RuTracker"
     },
     {
       "id": "https://addons.mozilla.org/firefox/addon/rutracker_torrent_search",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Torrent search"
     },
     {
       "id": "http://rutor.info/games",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Rutor"
     },
     {
       "id": "https://rustorka.com/forum/index.php?c=6",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Rustorka"
     },
     {
       "id": "https://www.torrentmac.net/category/games",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Mac Torrents"
     },
     {
       "id": "https://dodi-repacks.site",
-      "isExternal": true
+      "isExternal": true,
+      "text": "DODI Repacks"
     },
     {
       "id": "https://fitgirl-repacks.site",
-      "isExternal": true
+      "isExternal": true,
+      "text": "FitGirl Repacks"
     },
     {
       "id": "https://elamigos.site",
-      "isExternal": true
+      "isExternal": true,
+      "text": "ElAmigos"
     },
     {
       "id": "https://kaoskrew.org/viewforum.php?f=13&sid=c2dac73979171b67f4c8b70c9c4c72fb",
-      "isExternal": true
+      "isExternal": true,
+      "text": "KaOsKrew"
     },
     {
       "id": "https://triahgames.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "TriahGames"
     },
     {
       "id": "https://byxatab.org",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Xatab"
     },
     {
       "id": "http://rutor.info/browse/0/8/1642915/0",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Chovka"
     },
     {
       "id": "https://repack.info",
-      "isExternal": true
+      "isExternal": true,
+      "text": "2"
     },
     {
       "id": "https://game-repack.site/scooter",
-      "isExternal": true
+      "isExternal": true,
+      "text": "ScOOt3r Repacks"
     },
     {
       "id": "https://web.archive.org/web/20220616203326/https://masquerade.site",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Masquerade Repacks"
     },
     {
       "id": "https://www.tiny-repacks.win",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Tiny Repacks"
     },
     {
       "id": "https://1337x.to/user/ZAZIX/",
-      "isExternal": true
+      "isExternal": true,
+      "text": "ZAZIX"
     },
     {
       "id": "https://rentry.org/gnarly_repacks",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Gnarly Repacks"
     },
     {
       "id": "https://kapitalsin.com/forum",
-      "isExternal": true
+      "isExternal": true,
+      "text": "KAPITALSIN"
     },
     {
       "id": "https://m4ckd0ge-repacks.site",
-      "isExternal": true
+      "isExternal": true,
+      "text": "M4CKD0GE Repacks"
     },
     {
       "id": "https://www.magipack.games",
-      "isExternal": true
+      "isExternal": true,
+      "text": "MagiPack Games"
     },
     {
       "id": "https://collectionchamber.blogspot.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "The Collection Chamber"
     },
     {
       "id": "https://cpgrepacks.site",
-      "isExternal": true
+      "isExternal": true,
+      "text": "CPG Repacks"
     },
     {
       "id": "https://r-roms.github.io",
-      "isExternal": true
+      "isExternal": true,
+      "text": "r/Roms Megathread"
     },
     {
       "id": "https://crocdb.net",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Crocdb"
     },
     {
       "id": "https://cdromance.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "CDRomance"
     },
     {
       "id": "https://dlpsgame.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "DLPSGAME"
     },
     {
       "id": "https://edgeemu.net",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Edge Emulation"
     },
     {
       "id": "https://theromdepot.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "The ROM Depot"
     },
     {
       "id": "https://vimm.net/vault",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Vimm's Lair"
     },
     {
       "id": "https://www.emuparadise.me/roms-isos-games.php",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Emuparadise"
     },
     {
       "id": "https://lemmy.world/post/3061617",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Download workaround guide"
     },
     {
       "id": "https://nopaystation.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "NoPayStation"
     },
     {
       "id": "https://www.ziperto.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Ziperto"
     },
     {
       "id": "https://nsw2u.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "NSW2u"
     },
     {
       "id": "https://nxbrew.net",
-      "isExternal": true
+      "isExternal": true,
+      "text": "NXBrew"
     },
     {
       "id": "https://romslab.com/",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Romslab"
     },
     {
       "id": "https://emulation.gametechwiki.com/index.php/Main_Page#Emulators",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Emulation General Wiki"
     },
     {
       "id": "https://r-roms.github.io/megathread/misc/#bios-files",
-      "isExternal": true
+      "isExternal": true,
+      "text": "here"
     },
     {
       "id": "https://batocera.org",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Batocera.linux"
     },
     {
       "id": "https://winlator.org",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Winlator"
     },
     {
       "id": "https://retroarch.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "RetroArch"
     },
     {
       "id": "https://ares-emu.net",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Ares"
     },
     {
       "id": "https://github.com/KeatonTheBot/Kenji-NX",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Kenji-NX"
     },
     {
       "id": "https://git.citron-emu.org/Citron/Citron",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Citron"
     },
     {
       "id": "https://shadps4.net",
-      "isExternal": true
+      "isExternal": true,
+      "text": "shadPS4"
     },
     {
       "id": "https://cemu.info",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Cemu"
     },
     {
       "id": "https://github.com/SSimco/Cemu",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Android"
     },
     {
       "id": "https://vita3k.org",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Vita3K"
     },
     {
       "id": "https://azahar-emu.org",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Azahar"
     },
     {
       "id": "https://dolphin-emu.org",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Dolphin Emulator"
     },
     {
       "id": "https://rpcs3.net",
-      "isExternal": true
+      "isExternal": true,
+      "text": "RPCS3"
     },
     {
       "id": "https://github.com/DHrpcs3/rpcs3-android",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Android"
     },
     {
       "id": "https://xenia.jp",
-      "isExternal": true
+      "isExternal": true,
+      "text": "xenia"
     },
     {
       "id": "https://www.mamedev.org",
-      "isExternal": true
+      "isExternal": true,
+      "text": "MAME"
     },
     {
       "id": "https://www.ppsspp.org",
-      "isExternal": true
+      "isExternal": true,
+      "text": "PPSSPP"
     },
     {
       "id": "https://melonds.kuribo64.net",
-      "isExternal": true
+      "isExternal": true,
+      "text": "melonDS"
     },
     {
       "id": "https://github.com/rafaelvcaetano/melonDS-android",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Android"
     },
     {
       "id": "https://desmume.org",
-      "isExternal": true
+      "isExternal": true,
+      "text": "DeSmuME"
     },
     {
       "id": "https://www.nogba.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "No$GBA"
     },
     {
       "id": "https://xemu.app",
-      "isExternal": true
+      "isExternal": true,
+      "text": "xemu"
     },
     {
       "id": "https://mgba.io",
-      "isExternal": true
+      "isExternal": true,
+      "text": "mGBA"
     },
     {
       "id": "https://pcsx2.net",
-      "isExternal": true
+      "isExternal": true,
+      "text": "PCSX2"
     },
     {
       "id": "https://parallel-launcher.ca",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Parallel Launcher"
     },
     {
       "id": "https://www.duckstation.org",
-      "isExternal": true
+      "isExternal": true,
+      "text": "DuckStation"
     },
     {
       "id": "https://github.com/bsnes-emu/bsnes",
-      "isExternal": true
+      "isExternal": true,
+      "text": "bsnes"
     },
     {
       "id": "https://www.snes9x.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Snes9x"
     },
     {
       "id": "https://weplaydos.games/",
-      "isExternal": true
+      "isExternal": true,
+      "text": "WePlayDOS Games"
     },
     {
       "id": "https://www.reddit.com/r/roms",
-      "isExternal": true
+      "isExternal": true,
+      "text": "r/Roms"
     },
     {
       "id": "https://reddit.com/r/EmulationPiracy",
-      "isExternal": true
+      "isExternal": true,
+      "text": "r/EmulationPiracy"
     },
     {
       "id": "https://www.reddit.com/r/SwitchHacks",
-      "isExternal": true
+      "isExternal": true,
+      "text": "r/SwitchHacks"
     },
     {
       "id": "https://www.reddit.com/r/SwitchHaxing",
-      "isExternal": true
+      "isExternal": true,
+      "text": "r/SwitchHaxing"
     },
     {
       "id": "https://www.reddit.com/r/ps4homebrew",
-      "isExternal": true
+      "isExternal": true,
+      "text": "r/ps4homebrew"
     },
     {
       "id": "https://www.reddit.com/r/WiiUHacks",
-      "isExternal": true
+      "isExternal": true,
+      "text": "r/WiiUHacks"
     },
     {
       "id": "https://www.reddit.com/r/3dshacks",
-      "isExternal": true
+      "isExternal": true,
+      "text": "r/3dshacks"
     },
     {
       "id": "https://www.reddit.com/r/vitahacks",
-      "isExternal": true
+      "isExternal": true,
+      "text": "r/vitahacks"
     },
     {
       "id": "https://www.reddit.com/r/VitaPiracy",
-      "isExternal": true
+      "isExternal": true,
+      "text": "r/VitaPiracy"
     },
     {
       "id": "https://www.reddit.com/r/WiiHacks",
-      "isExternal": true
+      "isExternal": true,
+      "text": "r/WiiHacks"
     },
     {
       "id": "https://www.reddit.com/r/ps3homebrew",
-      "isExternal": true
+      "isExternal": true,
+      "text": "r/ps3homebrew"
     },
     {
       "id": "https://github.com/privateersclub/wiki/issues/new",
-      "isExternal": true
+      "isExternal": true,
+      "text": "open an issue"
     },
     {
       "id": "https://scenerules.org",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Scene rules"
     },
     {
       "id": "https://play.google.com/store/apps/details?id=org.mozilla.firefox",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Firefox"
     },
     {
       "id": "https://addons.mozilla.org/android/addon/ublock-origin",
-      "isExternal": true
+      "isExternal": true,
+      "text": "uBlock Origin"
     },
     {
       "id": "https://adguard.com/adguard-android/overview.html",
-      "isExternal": true
+      "isExternal": true,
+      "text": "AdGuard"
     },
     {
       "id": "https://nextdns.io",
-      "isExternal": true
+      "isExternal": true,
+      "text": "NextDNS"
     },
     {
       "id": "https://youtu.be/WUG57ynLb8I",
-      "isExternal": true
+      "isExternal": true,
+      "text": "this video"
     },
     {
       "id": "https://ublockorigin.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "uBlock Origin"
     },
     {
       "id": "https://codeberg.org/Amm0ni4/bypass-all-shortlinks-debloated",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Bypass All Shortlinks Debloated"
     },
     {
       "id": "https://bypass.city",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Bypass.city"
     },
     {
       "id": "https://ahadns.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "AhaDNS"
     },
     {
       "id": "https://wiki.archlinux.org",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Arch Wiki"
     },
     {
       "id": "https://forum.torrminatorr.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Torrminatorr"
     },
     {
       "id": "https://1337x.to/user/johncena141/",
-      "isExternal": true
+      "isExternal": true,
+      "text": "johncena141"
     },
     {
       "id": "https://rutracker.org/forum/viewforum.php?f=899",
-      "isExternal": true
+      "isExternal": true,
+      "text": "RuTracker"
     },
     {
       "id": "https://wiki.archlinux.org/index.php/Kernel_parameters",
-      "isExternal": true
+      "isExternal": true,
+      "text": "disable security mitigations"
     },
     {
       "id": "https://wiki.archlinux.org/title/Backup",
-      "isExternal": true
+      "isExternal": true,
+      "text": "backups"
     },
     {
       "id": "https://github.com/zen-kernel/zen-kernel",
-      "isExternal": true
+      "isExternal": true,
+      "text": "linux-zen"
     },
     {
       "id": "https://xanmod.org",
-      "isExternal": true
+      "isExternal": true,
+      "text": "XanMod Stable Real-time"
     },
     {
       "id": "https://liquorix.net",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Liquorix"
     },
     {
       "id": "https://github.com/clearlinux-pkgs/linux",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Clear Linux Kernel"
     },
     {
       "id": "https://github.com/Frogging-Family/linux-tkg",
-      "isExternal": true
+      "isExternal": true,
+      "text": "linux-tkg"
     },
     {
       "id": "https://lutris.net",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Lutris"
     },
     {
       "id": "https://heroicgameslauncher.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Heroic Games Launcher"
     },
     {
       "id": "https://sharkwouter.github.io/minigalaxy",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Minigalaxy"
     },
     {
       "id": "https://usebottles.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Bottles"
     },
     {
       "id": "https://github.com/flightlessmango/MangoHud",
-      "isExternal": true
+      "isExternal": true,
+      "text": "MangoHud"
     },
     {
       "id": "https://github.com/benjamimgois/goverlay",
-      "isExternal": true
+      "isExternal": true,
+      "text": "GUI"
     },
     {
       "id": "https://github.com/DavidoTek/ProtonUp-Qt",
-      "isExternal": true
+      "isExternal": true,
+      "text": "ProtonUp-Qt"
     },
     {
       "id": "https://github.com/Vysp3r/ProtonPlus",
-      "isExternal": true
+      "isExternal": true,
+      "text": "ProtonPlus"
     },
     {
       "id": "https://github.com/Winetricks/winetricks",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Winetricks"
     },
     {
       "id": "https://github.com/trigg/Discover",
-      "isExternal": true
+      "isExternal": true,
+      "text": "DiscordOverlayLinux"
     },
     {
       "id": "https://github.com/luxtorpeda-dev/luxtorpeda",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Luxtorpeda"
     },
     {
       "id": "https://tkashkin.github.io/projects/gamehub",
-      "isExternal": true
+      "isExternal": true,
+      "text": "GameHub"
     },
     {
       "id": "https://www.protondb.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "ProtonDB"
     },
     {
       "id": "https://appdb.winehq.org",
-      "isExternal": true
+      "isExternal": true,
+      "text": "AppDB"
     },
     {
       "id": "https://www.gamingonlinux.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "GamingOnLinux"
     },
     {
       "id": "https://www.icculus.org/lgfaq/gamelist.php",
-      "isExternal": true
+      "isExternal": true,
+      "text": "The Linux Gamers' Game List"
     },
     {
       "id": "https://wiki.archlinux.org/index.php/Gaming",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Arch Wiki / Gaming"
     },
     {
       "id": "https://libregamewiki.org/Main_Page",
-      "isExternal": true
+      "isExternal": true,
+      "text": "LibreGameWiki"
     },
     {
       "id": "https://osgameclones.com/",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Open Source Game Clones"
     },
     {
       "id": "https://linux-gaming.kwindu.eu/index.php",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Linux Gaming Wiki"
     },
     {
       "id": "https://www.reddit.com/r/LinuxCrackSupport/comments/yqfirv/how_to_install_fitgirl_or_dodi_windows_repacks_in",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Installing repacks with Lutris"
     },
     {
       "id": "https://reddit.com/r/LinuxCrackSupport/comments/tirarp/psa_when_installing_repacks_with_custom_wine",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Fix for DLL errors"
     },
     {
       "id": "https://www.reddit.com/r/LinuxCrackSupport",
-      "isExternal": true
+      "isExternal": true,
+      "text": "r/LinuxCrackSupport"
     },
     {
       "id": "https://www.reddit.com/r/linux_gaming",
-      "isExternal": true
+      "isExternal": true,
+      "text": "r/linux_gaming"
     },
     {
       "id": "https://www.reddit.com/r/SteamDeckPirates",
-      "isExternal": true
+      "isExternal": true,
+      "text": "r/SteamDeckPirates"
     },
     {
       "id": "https://forum.mobilism.me",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Mobilism"
     },
     {
       "id": "https://apkvision.org",
-      "isExternal": true
+      "isExternal": true,
+      "text": "ApkVision"
     },
     {
       "id": "https://pdalife.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "PDALIFE"
     },
     {
       "id": "https://androeed.store",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Androeed"
     },
     {
       "id": "https://apkhome.io",
-      "isExternal": true
+      "isExternal": true,
+      "text": "APKHome"
     },
     {
       "id": "https://liteapks.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "LITEAPKS"
     },
     {
       "id": "https://www.rockmods.net",
-      "isExternal": true
+      "isExternal": true,
+      "text": "RB Mods"
     },
     {
       "id": "https://auroraoss.com/",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Aurora Store"
     },
     {
       "id": "https://www.apkmirror.com/",
-      "isExternal": true
+      "isExternal": true,
+      "text": "APKMirror"
     },
     {
       "id": "https://github.com/Droid-ify/client",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Droid-ify"
     },
     {
       "id": "https://github.com/ImranR98/Obtainium/",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Obtainium"
     },
     {
       "id": "https://t.me/BabylonIPA",
-      "isExternal": true
+      "isExternal": true,
+      "text": "BabylonIPA"
     },
     {
       "id": "https://t.me/ipa_dark",
-      "isExternal": true
+      "isExternal": true,
+      "text": "IPADark"
     },
     {
       "id": "https://t.me/glesign",
-      "isExternal": true
+      "isExternal": true,
+      "text": "GLESign"
     },
     {
       "id": "https://ios.codevn.net",
-      "isExternal": true
+      "isExternal": true,
+      "text": "CodeVN"
     },
     {
       "id": "https://anyipa.me",
-      "isExternal": true
+      "isExternal": true,
+      "text": "AnyIPA"
     },
     {
       "id": "https://sultanmods.fyi",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Eth Mods"
     },
     {
       "id": "https://4pda.to/forum/",
-      "isExternal": true
+      "isExternal": true,
+      "text": "4PDA"
     },
     {
       "id": "https://pdalife.com/ios/games/",
-      "isExternal": true
+      "isExternal": true,
+      "text": "PDALife"
     },
     {
       "id": "https://ios.cfw.guide/sideloading-apps/",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Sideloading Guide"
     },
     {
       "id": "https://github.com/opa334/TrollStore",
-      "isExternal": true
+      "isExternal": true,
+      "text": "TrollStore"
     },
     {
       "id": "https://sidestore.io/",
-      "isExternal": true
+      "isExternal": true,
+      "text": "SideStore"
     },
     {
       "id": "https://sideloadly.io/",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Sideloadly"
     },
     {
       "id": "https://github.com/khcrysalis/Feather",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Feather"
     },
     {
       "id": "https://www.internetdownloadmanager.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Internet Download Manager"
     },
     {
       "id": "https://cracksurl.com/internet-download-manager",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Crack"
     },
     {
       "id": "https://rentry.org/installidm",
-      "isExternal": true
+      "isExternal": true,
+      "text": "instructions"
     },
     {
       "id": "https://github.com/unamer/IDMHelper",
-      "isExternal": true
+      "isExternal": true,
+      "text": "IDMHelper"
     },
     {
       "id": "https://jdownloader.org/jdownloader2",
-      "isExternal": true
+      "isExternal": true,
+      "text": "JDownloader"
     },
     {
       "id": "https://lemmy.world/post/3098414",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Enhancement guide"
     },
     {
       "id": "https://github.com/cracker0dks/CaptchaSolver",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Offline CAPTCHA solver"
     },
     {
       "id": "https://support.jdownloader.org/Knowledgebase/Article/View/dark-mode-theme",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Dark theme"
     },
     {
       "id": "https://xtremedownloadmanager.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Xtreme Download Manager"
     },
     {
       "id": "https://abdownloadmanager.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "AB Download Manager"
     },
     {
       "id": "https://gopeed.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Gopeed"
     },
     {
       "id": "https://github.com/search?q=topic%3Agopeed-extension&type=repositories",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Plugins"
     },
     {
       "id": "https://github.com/imfile-io/imfile-desktop",
-      "isExternal": true
+      "isExternal": true,
+      "text": "imFile"
     },
     {
       "id": "https://motrix.app",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Motrix"
     },
     {
       "id": "https://aria2.github.io",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Aria2"
     },
     {
       "id": "https://persepolisdm.github.io",
-      "isExternal": true
+      "isExternal": true,
+      "text": "GUI"
     },
     {
       "id": "https://github.com/ziahamza/webui-aria2",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Web UI"
     },
     {
       "id": "https://www.freedownloadmanager.org",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Free Download Manager"
     },
     {
       "id": "https://github.com/meowcateatrat/elephant",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Video downloader"
     },
     {
       "id": "https://www.qbittorrent.org",
-      "isExternal": true
+      "isExternal": true,
+      "text": "qBittorrent"
     },
     {
       "id": "https://github.com/c0re100/qBittorrent-Enhanced-Edition",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Enhanced edition"
     },
     {
       "id": "https://draculatheme.com/qbittorrent",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Dark theme"
     },
     {
       "id": "https://dev.deluge-torrent.org",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Deluge"
     },
     {
       "id": "https://transmissionbt.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Transmission"
     },
     {
       "id": "https://tixati.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Tixati"
     },
     {
       "id": "https://picotorrent.org",
-      "isExternal": true
+      "isExternal": true,
+      "text": "PicoTorrent"
     },
     {
       "id": "https://www.biglybt.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "BiglyBT"
     },
     {
       "id": "https://github.com/proninyaroslav/libretorrent",
-      "isExternal": true
+      "isExternal": true,
+      "text": "LibreTorrent"
     },
     {
       "id": "https://www.reddit.com/r/VPN",
-      "isExternal": true
+      "isExternal": true,
+      "text": "r/VPN"
     },
     {
       "id": "https://www.privacyguides.org/en/vpn",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Privacy Guides' VPN recommendations"
     },
     {
       "id": "https://www.reddit.com/r/VPN/comments/m736zt",
-      "isExternal": true
+      "isExternal": true,
+      "text": "VPN Comparison Table on r/VPN"
     },
     {
       "id": "https://fmhy.net/unsafesites",
-      "isExternal": true
+      "isExternal": true,
+      "text": "FMHY Unsafe Sites/Software"
     },
     {
       "id": "https://github.com/fmhy/FMHYFilterlist",
-      "isExternal": true
+      "isExternal": true,
+      "text": "this guide"
     },
     {
       "id": "https://raw.githubusercontent.com/fmhy/FMHYFilterlist/main/filterlist.txt",
-      "isExternal": true
+      "isExternal": true,
+      "text": "this"
     },
     {
       "id": "https://redd.it/117fq8t",
-      "isExternal": true
+      "isExternal": true,
+      "text": "fake 1337x sites"
     },
     {
       "id": "https://redd.it/16xtm67",
-      "isExternal": true
+      "isExternal": true,
+      "text": "fake Z-Lib sites"
     },
     {
       "id": "https://github.com/fmhy/FMHYedit/pull/307",
-      "isExternal": true
+      "isExternal": true,
+      "text": "DDoS attacks"
     },
     {
       "id": "https://www.reddit.com/r/software/comments/9s7wyb/whats_the_deal_with_sites_like_cnet_softonic_and/e8mtye9",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Adware"
     },
     {
       "id": "https://redd.it/lklst7",
-      "isExternal": true
+      "isExternal": true,
+      "text": "malware"
     },
     {
       "id": "https://www.reddit.com/r/Piracy/comments/qy6z3c",
-      "isExternal": true
+      "isExternal": true,
+      "text": "malware"
     },
     {
       "id": "https://rentry.co/filecr_malware",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Constantly"
     },
     {
       "id": "https://redd.it/120xk62",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Constantly"
     },
     {
       "id": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/comments/10bh0h9/unsafe_sites_software_thread/jhi7u0h",
-      "isExternal": true
+      "isExternal": true,
+      "text": "adware installers"
     },
     {
       "id": "https://i.ibb.co/VgW2ymY/YUnRNpN.png",
-      "isExternal": true
+      "isExternal": true,
+      "text": "IGG Games and nosTEAM"
     },
     {
       "id": "https://rentry.co/zu3i6",
-      "isExternal": true
+      "isExternal": true,
+      "text": "malware"
     },
     {
       "id": "https://i.ibb.co/QXrCfqQ/Untitled.png",
-      "isExternal": true
+      "isExternal": true,
+      "text": "malware in μTorrent"
     },
     {
       "id": "https://pastebin.com/gCmWs2GR",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Read this Pastebin about fake Windows activators."
     },
     {
       "id": "https://www.theverge.com/2015/3/6/8161251/utorrents-secret-bitcoin-miner-adware-malware",
-      "isExternal": true
+      "isExternal": true,
+      "text": "adware"
     },
     {
       "id": "https://www.virustotal.com/gui/file/3ad1aed8bd704152157ac92afed1c51e60f205fbdce1365bad8eb9b3a69544d0",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Adware"
     },
     {
       "id": "https://redd.it/12h2v6n",
-      "isExternal": true
+      "isExternal": true,
+      "text": "spam"
     },
     {
       "id": "https://rentry.co/tvrnw",
-      "isExternal": true
+      "isExternal": true,
+      "text": "spying"
     },
     {
       "id": "https://rentry.co/i8dwr",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Owned"
     },
     {
       "id": "https://www.reddit.com/r/PrivateInternetAccess/comments/q3oye4/former_malware_distributor_kape_technologies_now",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Kape"
     },
     {
       "id": "https://www.virustotal.com/gui/file/f20d66b647f15a5cd5f590b3065a1ef2bcd9dad307478437766640f16d416bbf/detection",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Adware"
     },
     {
       "id": "https://rentry.co/GShade_notice",
-      "isExternal": true
+      "isExternal": true,
+      "text": "reboots"
     },
     {
       "id": "https://youtu.be/9sPaJxRmIPc",
-      "isExternal": true
+      "isExternal": true,
+      "text": "predators and scammers"
     },
     {
       "id": "https://www.kuketz-blog.de/opera-datensendeverhalten-desktop-version-browser-check-teil13",
-      "isExternal": true
+      "isExternal": true,
+      "text": "very"
     },
     {
       "id": "https://rentry.co/operagx",
-      "isExternal": true
+      "isExternal": true,
+      "text": "bad"
     },
     {
       "id": "https://www.androidpolice.com/2020/01/21/opera-predatory-loans",
-      "isExternal": true
+      "isExternal": true,
+      "text": "predatory"
     },
     {
       "id": "https://www.malwarebytes.com/blog/detections/pup-optional-pcprotect",
-      "isExternal": true
+      "isExternal": true,
+      "text": "1"
     },
     {
       "id": "https://youtu.be/PcS3EozgyhI",
-      "isExternal": true
+      "isExternal": true,
+      "text": "2"
     },
     {
       "id": "https://www.malwarebytes.com/blog/detections/pup-optional-totalav",
-      "isExternal": true
+      "isExternal": true,
+      "text": "3"
     },
     {
       "id": "https://www.reddit.com/r/Minecraft/comments/y6lt6s/important_warning_for_users_of_the_polymc_mod",
-      "isExternal": true
+      "isExternal": true,
+      "text": "kicked all members"
     },
     {
       "id": "https://www.reddit.com/r/PiratedGames/comments/zmzzrt",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Shady"
     },
     {
       "id": "https://redd.it/x66rz2",
-      "isExternal": true
+      "isExternal": true,
+      "text": "malware"
     },
     {
       "id": "https://www.microsoft.com/download/details.aspx?id=35",
-      "isExternal": true
+      "isExternal": true,
+      "text": "DirectX"
     },
     {
       "id": "https://github.com/abbodi1406/vcredist/releases/latest",
-      "isExternal": true
+      "isExternal": true,
+      "text": "VisualCppRedist AIO"
     },
     {
       "id": "https://www.microsoft.com/download/details.aspx?id=20914",
-      "isExternal": true
+      "isExternal": true,
+      "text": "XNA Framework"
     },
     {
       "id": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=65887",
-      "isExternal": true
+      "isExternal": true,
+      "text": "RIN SteamInternals"
     },
     {
       "id": "https://steamcommunity.com/sharedfiles/filedetails/?id=451698754",
-      "isExternal": true
+      "isExternal": true,
+      "text": "A Collection of Steam Tools"
     },
     {
       "id": "https://github.com/acidicoala/Koalageddon",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Koalageddon"
     },
     {
       "id": "https://github.com/acidicoala/Koalageddon2",
-      "isExternal": true
+      "isExternal": true,
+      "text": "v2"
     },
     {
       "id": "https://cs.rin.ru/forum/viewtopic.php?f=29&t=70576",
-      "isExternal": true
+      "isExternal": true,
+      "text": "CreamAPI"
     },
     {
       "id": "https://cs.rin.ru/forum/viewtopic.php?p=2013521",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Automatic setup"
     },
     {
       "id": "https://github.com/Detanup01/gbe_fork",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Goldberg Steam Emulator"
     },
     {
       "id": "https://github.com/brunolee-GIT/GSE-Generator",
-      "isExternal": true
+      "isExternal": true,
+      "text": "GUI"
     },
     {
       "id": "https://rentry.co/goldberg_emulator",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Guide"
     },
     {
       "id": "https://cs.rin.ru/forum/viewtopic.php?p=2009102#p2009102",
-      "isExternal": true
+      "isExternal": true,
+      "text": "SmartSteamEmu"
     },
     {
       "id": "https://cs.rin.ru/forum/viewtopic.php?f=20&t=134707&hilit=unsteam",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Unsteam"
     },
     {
       "id": "https://online-fix.me",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Online Fix"
     },
     {
       "id": "https://www.radmin-vpn.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Radmin VPN"
     },
     {
       "id": "https://www.zerotier.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "ZeroTier"
     },
     {
       "id": "https://www.gameranger.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "GameRanger"
     },
     {
       "id": "https://www.voobly.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Voobly"
     },
     {
       "id": "https://github.com/atom0s/Steamless",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Steamless"
     },
     {
       "id": "https://github.com/oureveryday/Steam-auto-crack",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Automatic cracker"
     },
     {
       "id": "https://github.com/BlueAmulet/GreenLuma-2024-Manager",
-      "isExternal": true
+      "isExternal": true,
+      "text": "GreenLuma 2024 Manager"
     },
     {
       "id": "https://cs.rin.ru/forum/viewtopic.php?f=29&t=97112",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Auto SteamFix Tool"
     },
     {
       "id": "https://cs.rin.ru/forum/viewtopic.php?f=20&t=104412",
-      "isExternal": true
+      "isExternal": true,
+      "text": "EA DLC Unlocker"
     },
     {
       "id": "https://cs.rin.ru/forum/viewtopic.php?f=29&t=105551",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Nemirtingas Epic Emulator"
     },
     {
       "id": "https://steamdb.info",
-      "isExternal": true
+      "isExternal": true,
+      "text": "SteamDB"
     },
     {
       "id": "https://steamdb.info/extension",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Extension"
     },
     {
       "id": "https://github.com/imwaitingnow/WorkshopDL",
-      "isExternal": true
+      "isExternal": true,
+      "text": "WorkshopDL"
     },
     {
       "id": "https://cs.rin.ru/forum/viewtopic.php?f=29&t=102519",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Sims 4 Updater"
     },
     {
       "id": "https://plutonium.pw",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Plutonium"
     },
     {
       "id": "https://www.luckypatchers.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Lucky Patcher"
     },
     {
       "id": "https://massgrave.dev",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Microsoft Activation Scripts"
     },
     {
       "id": "https://vk.com/monkrus",
-      "isExternal": true
+      "isExternal": true,
+      "text": "m0nkrus"
     },
     {
       "id": "https://reddit.com/r/GenP/comments/1h3c2ny/monkrus_users_need_to_use_mirror_site_on_vk",
-      "isExternal": true
+      "isExternal": true,
+      "text": "site issues"
     },
     {
       "id": "https://lrepacks.net",
-      "isExternal": true
+      "isExternal": true,
+      "text": "LRepacks"
     },
     {
       "id": "https://cracksurl.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "CRACKSurl"
     },
     {
       "id": "https://7-zip.org",
-      "isExternal": true
+      "isExternal": true,
+      "text": "7-Zip"
     },
     {
       "id": "https://bitwarden.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Bitwarden"
     },
     {
       "id": "https://www.mozilla.org/firefox",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Firefox"
     },
     {
       "id": "https://github.com/yokoffing/Betterfox",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Betterfox"
     },
     {
       "id": "https://thorium.rocks",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Thorium"
     },
     {
       "id": "https://www.torproject.org",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Tor Browser"
     },
     {
       "id": "https://xan105.github.io/Achievement-Watcher",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Achievement Watcher"
     },
     {
       "id": "https://github.com/50t0r25/achievement-watchdog",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Achievement Watchdog"
     },
     {
       "id": "https://playnite.link",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Playnite"
     },
     {
       "id": "https://github.com/hydralauncher/hydra",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Hydra"
     },
     {
       "id": "https://parsec.app",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Parsec"
     },
     {
       "id": "https://ov2.eu/programs/rapidcrc-unicode",
-      "isExternal": true
+      "isExternal": true,
+      "text": "RapidCRC"
     },
     {
       "id": "https://github.com/SpotX-Official/SpotX",
-      "isExternal": true
+      "isExternal": true,
+      "text": "SpotX"
     },
     {
       "id": "https://github.com/SpotX-Official/SpotX-Bash",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Linux"
     },
     {
       "id": "https://github.com/yokoffing/filterlists#recommended-filters-for-ublock-origin",
-      "isExternal": true
+      "isExternal": true,
+      "text": "yokoffing's recommendations"
     },
     {
       "id": "https://iorate.github.io/ublacklist/docs",
-      "isExternal": true
+      "isExternal": true,
+      "text": "uBlacklist"
     },
     {
       "id": "https://addons.mozilla.org/firefox/addon/firemonkey",
-      "isExternal": true
+      "isExternal": true,
+      "text": "FireMonkey"
     },
     {
       "id": "https://www.tampermonkey.net",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Tampermonkey"
     },
     {
       "id": "https://violentmonkey.github.io",
-      "isExternal": true
+      "isExternal": true,
+      "text": "ViolentMonkey"
     },
     {
       "id": "https://github.com/mozilla/multi-account-containers",
-      "isExternal": true
+      "isExternal": true,
+      "text": "Firefox Multi-Account Containers"
     },
     {
       "id": "https://flingtrainer.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "FLiNG Trainer"
     },
     {
       "id": "https://gamecopyworld.com/games",
-      "isExternal": true
+      "isExternal": true,
+      "text": "GameCopyWorld"
     },
     {
       "id": "https://www.wemod.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "WeMod"
     },
     {
       "id": "https://megagames.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "MegaGames"
     },
     {
       "id": "https://fearlessrevolution.com",
-      "isExternal": true
+      "isExternal": true,
+      "text": "FearLess Cheat Engine"
     },
     {
       "id": "https://mrantifun.net",
-      "isExternal": true
+      "isExternal": true,
+      "text": "MrAntiFun"
     },
     {
       "id": "https://www.xrel.to/games-release-list.html?lang=en_US",
-      "isExternal": true
+      "isExternal": true,
+      "text": "xREL"
     },
     {
       "id": "https://m2v.ru/?func=part&Part=3",
-      "isExternal": true
+      "isExternal": true,
+      "text": "m2v.ru"
     },
     {
       "id": "https://predb.org/section/GAMES",
-      "isExternal": true
+      "isExternal": true,
+      "text": "PreDB.org"
     },
     {
       "id": "https://predb.de/section/GAMES",
-      "isExternal": true
+      "isExternal": true,
+      "text": "PreDB.de"
     },
     {
       "id": "https://www.srrdb.com/browse/category:pc/1",
-      "isExternal": true
+      "isExternal": true,
+      "text": "srrDB"
     },
     {
       "id": "https://predb.pw",
-      "isExternal": true
+      "isExternal": true,
+      "text": "PreDB.pw"
     },
     {
       "id": "https://www.reddit.com/r/CrackWatch",
-      "isExternal": true
+      "isExternal": true,
+      "text": "r/CrackWatch"
     },
     {
       "id": "https://www.reddit.com/r/RepackWatchers",
-      "isExternal": true
+      "isExternal": true,
+      "text": "r/RepackWatchers"
     },
     {
       "id": "https://www.reddit.com/r/RepackWorld",
-      "isExternal": true
+      "isExternal": true,
+      "text": "r/RepackWorld"
     },
     {
       "id": "https://www.reddit.com/r/PiratedGames",
-      "isExternal": true
+      "isExternal": true,
+      "text": "r/PiratedGames"
     },
     {
       "id": "https://www.reddit.com/r/FREEMEDIAHECKYEAH",
-      "isExternal": true
+      "isExternal": true,
+      "text": "r/FREEMEDIAHECKYEAH"
     },
     {
       "id": "https://www.reddit.com/r/Piracy",
-      "isExternal": true
+      "isExternal": true,
+      "text": "r/Piracy"
     },
     {
       "id": "https://www.reddit.com/r/CrackSupport",
-      "isExternal": true
+      "isExternal": true,
+      "text": "r/CrackSupport"
     },
     {
       "id": "https://www.reddit.com/r/QuestPiracy",
-      "isExternal": true
+      "isExternal": true,
+      "text": "r/QuestPiracy"
     },
     {
       "id": "https://www.reddit.com/r/SwitchPirates",
-      "isExternal": true
+      "isExternal": true,
+      "text": "r/SwitchPirates"
     }
   ],
   "links": [

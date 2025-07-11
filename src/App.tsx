@@ -1,10 +1,13 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import { Route, Switch, useLocation } from 'wouter';
 import privateersclubData from '../data/privateersclub.json';
 import wotakuData from '../data/wotaku.json';
-import { ErrorBoundary } from './components/error-boundary';
-import GraphView from './components/graph';
-import type { Graph } from './components/graph/types';
+import { FallbackRender } from './components/error-boundary';
+import QuartzGraph from './components/graph';
+import { NodePropertiesPanel } from './components/graph/node-properties-panel';
+import type { Graph, Node } from './components/graph/types';
+import NotFoundPage from './components/not-found';
 import { useToggleReactScan } from './components/react-scan';
 import { ThemeToggle } from './components/theme-toggle';
 
@@ -80,7 +83,7 @@ const HomePage: React.FC = () => {
 
         <div className='bg-warning-3 text-warning-12 p-4 w-full rounded font-sans'>
           <div className='text-xs'>
-            <span className='font-bold'>{'⚠️ warning: '}</span>
+            <span className='font-bold'>{'! warning: '}</span>
             Large graphs may crash or severely lag your browser. Proceed with
             caution.
           </div>
@@ -122,9 +125,20 @@ const HomePage: React.FC = () => {
 const GraphPage: React.FC<{ params: { graphId: string } }> = ({ params }) => {
   const { data, loading, error } = useGraphData(params.graphId);
   const [showInfo, setShowInfo] = useState(true);
-  const [activeTab, setActiveTab] = useState<
-    'info' | 'developer' | 'graphs'
-  >('info');
+  const [activeTab, setActiveTab] = useState<'info' | 'developer' | 'graphs'>(
+    'info',
+  );
+  const [selectedNode, setSelectedNode] = useState<Node | null>(null);
+
+  // PIXI.js options for developer tab
+  const [pixiPreference, setPixiPreference] = useState<'webgl' | 'webgpu'>(
+    'webgl',
+  );
+  const [powerPreference, setPowerPreference] = useState<
+    'high-performance' | 'low-power'
+  >('high-performance');
+  const [failIfMajorPerformanceCaveat, setFailIfMajorPerformanceCaveat] =
+    useState(false);
 
   const [enabled, setEnabled] = useState(true);
   const { toggle } = useToggleReactScan({
@@ -141,22 +155,47 @@ const GraphPage: React.FC<{ params: { graphId: string } }> = ({ params }) => {
     graphRef.current?.recenter();
   };
 
+  const [shouldCrash, setShouldCrash] = useState(false);
+
   const handleCrash = () => {
-    throw new Error('oooooooooooooooooooops');
+    setShouldCrash(true);
   };
+
+  // This will crash during render, triggering the error boundary
+  if (shouldCrash) {
+    throw new Error('💥 Intentional crash triggered from developer tab!');
+  }
 
   // avoid unnecessary re-renders
   const memoizedNodes = useMemo(() => data?.nodes || [], [data]);
   const memoizedLinks = useMemo(() => data?.links || [], [data]);
+
+  // Memoize the config object to prevent unnecessary re-renders
+  const graphConfig = useMemo(
+    () => ({
+      pixiPreference,
+      powerPreference,
+      failIfMajorPerformanceCaveat,
+    }),
+    [pixiPreference, powerPreference, failIfMajorPerformanceCaveat],
+  );
+
+  const handleNodeClick = useCallback(
+    (nodeId: string) => {
+      const node = memoizedNodes.find((n) => n.id === nodeId);
+      if (node) {
+        setSelectedNode(node);
+      }
+    },
+    [memoizedNodes],
+  );
 
   if (loading) {
     return (
       <div className='prose dark:prose-invert bg-neutral-1 text-neutral-11 font-sans fixed inset-0 z-50 flex items-center justify-center'>
         <div className='relative w-full max-w-md mx-auto p-8 flex flex-col items-center gap-6'>
           <span className='i-svg-spinners:bars-rotate-fade size-12 bg-black dark:bg-white' />
-          <p className='text-neutral-10'>
-            Loading graph data... {':^)'}
-          </p>
+          <p className='text-neutral-10'>Loading graph data... {':^)'}</p>
         </div>
       </div>
     );
@@ -177,13 +216,18 @@ const GraphPage: React.FC<{ params: { graphId: string } }> = ({ params }) => {
 
   return (
     <div className='min-h-screen'>
-      <ErrorBoundary>
-        <GraphView
-          ref={graphRef}
-          nodes={memoizedNodes}
-          links={memoizedLinks}
-        />
-      </ErrorBoundary>
+      <QuartzGraph
+        ref={graphRef}
+        nodes={memoizedNodes}
+        links={memoizedLinks}
+        onNodeClick={handleNodeClick}
+        config={graphConfig}
+      />
+
+      <NodePropertiesPanel
+        node={selectedNode}
+        onClose={() => setSelectedNode(null)}
+      />
 
       <div className='font-sans! fixed bottom-6 right-6 z-50 flex flex-col items-end'>
         {showInfo && (
@@ -339,7 +383,63 @@ const GraphPage: React.FC<{ params: { graphId: string } }> = ({ params }) => {
                 >
                   <span className='text-lg'>🚫</span> Crash the graph
                 </button>
+                {/* PIXI.js Options */}
+                <div className='space-y-2'>
+                  <div className='text-xs text-neutral-11 font-medium'>
+                    PIXI.js Options
+                  </div>
 
+                  <div className='flex items-center justify-between'>
+                    <span className='text-sm text-neutral-12'>
+                      Graphics API
+                    </span>
+                    <select
+                      value={pixiPreference}
+                      onChange={(e) =>
+                        setPixiPreference(e.target.value as 'webgl' | 'webgpu')}
+                      className='px-2 py-1 rounded text-sm bg-neutral-3 text-neutral-12 border border-neutral-6'
+                    >
+                      <option value='webgl'>WebGL</option>
+                      <option value='webgpu'>WebGPU</option>
+                    </select>
+                  </div>
+
+                  <div className='flex items-center justify-between'>
+                    <span className='text-sm text-neutral-12'>
+                      Power Preference
+                    </span>
+                    <select
+                      value={powerPreference}
+                      onChange={(e) =>
+                        setPowerPreference(
+                          e.target.value as 'high-performance' | 'low-power',
+                        )}
+                      className='px-2 py-1 rounded text-sm bg-neutral-3 text-neutral-12 border border-neutral-6'
+                    >
+                      <option value='high-performance'>High Performance</option>
+                      <option value='low-power'>Low Power</option>
+                    </select>
+                  </div>
+
+                  <div className='flex items-center justify-between'>
+                    <span className='text-sm text-neutral-12'>
+                      Fail on Performance Issues
+                    </span>
+                    <button
+                      className={`px-3 py-1 rounded-md text-sm transition-all border-none outline-none ${
+                        failIfMajorPerformanceCaveat
+                          ? 'bg-primary-4 text-primary-11'
+                          : 'bg-neutral-3 text-neutral-11 hover:bg-neutral-4'
+                      }`}
+                      onClick={() =>
+                        setFailIfMajorPerformanceCaveat(
+                          !failIfMajorPerformanceCaveat,
+                        )}
+                    >
+                      {failIfMajorPerformanceCaveat ? 'ON' : 'OFF'}
+                    </button>
+                  </div>
+                </div>
                 <ThemeToggle />
               </div>
             )}
@@ -363,25 +463,15 @@ const GraphPage: React.FC<{ params: { graphId: string } }> = ({ params }) => {
 
 const App: React.FC = () => {
   return (
-    <Switch>
-      <Route path='/' component={HomePage} />
-      <Route path='/graph/:graphId'>
-        {(params) => <GraphPage params={params} />}
-      </Route>
-      <Route>
-        <div className='fixed inset-0 z-50 flex items-center justify-center bg-neutral-1'>
-          <div className='text-center'>
-            <h2 className='text-xl font-bold mb-2'>Page Not Found</h2>
-            <button
-              onClick={() => window.location.href = '/'}
-              className='text-info-9 hover:text-info-10 underline'
-            >
-              Go back to home
-            </button>
-          </div>
-        </div>
-      </Route>
-    </Switch>
+    <ErrorBoundary fallbackRender={FallbackRender}>
+      <Switch>
+        <Route path='/' component={HomePage} />
+        <Route path='/graph/:graphId'>
+          {(params) => <GraphPage params={params} />}
+        </Route>
+        <Route component={NotFoundPage} />
+      </Switch>
+    </ErrorBoundary>
   );
 };
 
