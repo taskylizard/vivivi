@@ -4,9 +4,9 @@ import { defineConfig } from 'vite';
 import terminal from 'vite-plugin-terminal';
 
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig((config) => ({
   build: {
     sourcemap: true,
   },
-  plugins: [terminal({ console: 'terminal' }), react(), unocss()],
-});
+  plugins: [config.mode === 'development' ? terminal() : [], react(), unocss()],
+}));
