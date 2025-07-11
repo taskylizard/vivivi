@@ -1,14 +1,15 @@
 import { X } from 'lucide-react';
-import type { Node } from './graph/types';
+import type { Node } from './types';
 
 interface NodePropertiesPanelProps {
   node: Node | null;
   onClose: () => void;
 }
 
-export const NodePropertiesPanel: React.FC<NodePropertiesPanelProps> = (
-  { node, onClose },
-) => {
+export const NodePropertiesPanel: React.FC<NodePropertiesPanelProps> = ({
+  node,
+  onClose,
+}) => {
   if (!node) return null;
 
   return (
@@ -88,7 +89,7 @@ export const NodePropertiesPanel: React.FC<NodePropertiesPanelProps> = (
             Debug Info
           </summary>
           <pre className='mt-2 bg-neutral-4 p-2 rounded text-neutral-12 overflow-auto text-xs'>
-            {JSON.stringify(node, null, 2)}
+						{JSON.stringify(node, null, 2)}
           </pre>
         </details>
       </div>

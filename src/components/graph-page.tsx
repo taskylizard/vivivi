@@ -64,17 +64,12 @@ const GraphPage: React.FC<{ params: { graphId: string } }> = ({ params }) => {
 
   const graphRef = useRef<{ recenter: () => void }>(null);
 
-  const handleRecenter = () => {
-    graphRef.current?.recenter();
-  };
-
   const [shouldCrash, setShouldCrash] = useState(false);
 
   const handleCrash = () => {
     setShouldCrash(true);
   };
 
-  // This will crash during render, triggering the error boundary
   if (shouldCrash) {
     throw new Error('💥 Intentional crash triggered from developer tab!');
   }
@@ -203,15 +198,7 @@ const GraphPage: React.FC<{ params: { graphId: string } }> = ({ params }) => {
                       </span>
                     </div>
                     <div className='flex items-center gap-2'>
-                      <span
-                        className='inline-block w-5 h-5 rounded-full border-2'
-                        style={{
-                          background: 'rgb(var(--danger-9))',
-                          borderColor: 'rgb(var(--danger-11))',
-                          borderStyle: 'solid',
-                          borderWidth: '2px',
-                        }}
-                      >
+                      <span className='inline-block w-5 h-5 rounded-full border-2 neutral-6'>
                       </span>
                       <span className='text-sm text-neutral-12'>
                         External Link Node
@@ -286,12 +273,7 @@ const GraphPage: React.FC<{ params: { graphId: string } }> = ({ params }) => {
                   <span className='text-lg'>🔍</span>
                   {enabled ? ' Disable React Scan' : ' Enable React Scan'}
                 </button>
-                <button
-                  className='text-sm text-neutral-11 hover:text-neutral-12 bg-neutral-3 px-2 py-1 rounded-md transition-all border-none outline-none flex items-center gap-2'
-                  onClick={handleRecenter}
-                >
-                  <span className='text-lg'>🔄</span> Recenter
-                </button>
+
                 <button
                   className='text-sm text-neutral-11 hover:text-neutral-12 bg-neutral-3 px-2 py-1 rounded-md transition-all border-none outline-none flex items-center gap-2'
                   onClick={handleCrash}
