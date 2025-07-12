@@ -2,7 +2,8 @@
   "lineWidth": 80,
   "typescript": {
     "quoteStyle": "preferSingle",
-    "binaryExpression.operatorPosition": "sameLine"
+    "binaryExpression.operatorPosition": "sameLine",
+    "semiColons": "asi"
   },
   "json": {
     "indentWidth": 2
@@ -10,14 +11,10 @@
   "yaml": {
     "quotes": "preferSingle"
   },
-  "markdown": {
-  },
-  "toml": {
-  },
-  "malva": {
-  },
-  "markup": {
-  },
+  "markdown": {},
+  "toml": {},
+  "malva": {},
+  "markup": {},
   "excludes": [
     "**/node_modules",
     "**/*-lock.json",

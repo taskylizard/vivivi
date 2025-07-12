@@ -131,8 +131,8 @@ import {
   yellowA as yellowALight,
   yellowDark,
   yellowDarkA,
-} from '@radix-ui/colors';
-import type { Preflight } from 'unocss';
+} from '@radix-ui/colors'
+import type { Preflight } from 'unocss'
 import {
   defineConfig,
   presetAttributify,
@@ -142,8 +142,8 @@ import {
   presetWind3,
   transformerDirectives,
   transformerVariantGroup,
-} from 'unocss';
-import { presetAnimations } from 'unocss-preset-animations';
+} from 'unocss'
+import { presetAnimations } from 'unocss-preset-animations'
 
 type Shade =
   | '1'
@@ -157,236 +157,236 @@ type Shade =
   | '9'
   | '10'
   | '11'
-  | '12';
+  | '12'
 
-type CustomShadeCSSVaraible<T extends string> = `--${T}-${Shade}`;
+type CustomShadeCSSVaraible<T extends string> = `--${T}-${Shade}`
 type CustomColorObject<T extends string> = {
-  [key in CustomShadeCSSVaraible<T>]: string;
-};
+  [key in CustomShadeCSSVaraible<T>]: string
+}
 
-type RadixShadeVariable<T extends string> = `${T}${Shade}`;
+type RadixShadeVariable<T extends string> = `${T}${Shade}`
 type RadixColorObject<T extends string> = {
-  [key in RadixShadeVariable<T>]: string;
-};
+  [key in RadixShadeVariable<T>]: string
+}
 
 type ColorValue<T extends string> = [
   {
-    [key in RadixShadeVariable<T>]: string;
+    [key in RadixShadeVariable<T>]: string
   },
   {
-    [key in RadixShadeVariable<T>]: string;
+    [key in RadixShadeVariable<T>]: string
   },
-];
+]
 
 type Color<K extends string> = {
-  [key in K]: ColorValue<key>;
-};
+  [key in K]: ColorValue<key>
+}
 
 type Alias<K extends string, T extends string> = {
-  [key in K]?: T | T[];
-};
+  [key in K]?: T | T[]
+}
 
-type ColorsResult<N extends string> = Record<N, Record<Shade, string>>;
+type ColorsResult<N extends string> = Record<N, Record<Shade, string>>
 type ColorsOverlayResult = Record<
   'black' | 'white',
   Record<'DEFAULT' | Shade, string>
->;
+>
 
 // colors
 
 /**
  * @see https://www.radix-ui.com/colors/docs/palette-composition/scales#tomato
  */
-const tomato: ColorValue<'tomato'> = [tomatoLight, tomatoDark];
+const tomato: ColorValue<'tomato'> = [tomatoLight, tomatoDark]
 
 /**
  * @see https://www.radix-ui.com/colors/docs/palette-composition/scales#red
  */
-const red: ColorValue<'red'> = [redLight, redDark];
+const red: ColorValue<'red'> = [redLight, redDark]
 
 /**
  * @see https://www.radix-ui.com/colors/docs/palette-composition/scales#ruby
  */
-const ruby: ColorValue<'ruby'> = [rubyLight, rubyDark];
+const ruby: ColorValue<'ruby'> = [rubyLight, rubyDark]
 
 /**
  * @see https://www.radix-ui.com/colors/docs/palette-composition/scales#crimson
  */
-export const crimson: ColorValue<'crimson'> = [crimsonLight, crimsonDark];
+export const crimson: ColorValue<'crimson'> = [crimsonLight, crimsonDark]
 
 /**
  * @see https://www.radix-ui.com/colors/docs/palette-composition/scales#pink
  */
-const pink: ColorValue<'pink'> = [pinkLight, pinkDark];
+const pink: ColorValue<'pink'> = [pinkLight, pinkDark]
 
 /**
  * @see https://www.radix-ui.com/colors/docs/palette-composition/scales#plum
  */
-const plum: ColorValue<'plum'> = [plumLight, plumDark];
+const plum: ColorValue<'plum'> = [plumLight, plumDark]
 
 /**
  * @see https://www.radix-ui.com/colors/docs/palette-composition/scales#purple
  */
-const purple: ColorValue<'purple'> = [purpleLight, purpleDark];
+const purple: ColorValue<'purple'> = [purpleLight, purpleDark]
 
 /**
  * @see https://www.radix-ui.com/colors/docs/palette-composition/scales#violet
  */
-const violet: ColorValue<'violet'> = [violetLight, violetDark];
+const violet: ColorValue<'violet'> = [violetLight, violetDark]
 
 /**
  * @see https://www.radix-ui.com/colors/docs/palette-composition/scales#iris
  */
-const iris: ColorValue<'iris'> = [irisLight, irisDark];
+const iris: ColorValue<'iris'> = [irisLight, irisDark]
 
 /**
  * @see https://www.radix-ui.com/colors/docs/palette-composition/scales#indigo
  */
-const indigo: ColorValue<'indigo'> = [indigoLight, indigoDark];
+const indigo: ColorValue<'indigo'> = [indigoLight, indigoDark]
 
 /**
  * @see https://www.radix-ui.com/colors/docs/palette-composition/scales#blue
  */
-const blue: ColorValue<'blue'> = [blueLight, blueDark];
+const blue: ColorValue<'blue'> = [blueLight, blueDark]
 
 /**
  * @see https://www.radix-ui.com/colors/docs/palette-composition/scales#cyan
  */
-const cyan: ColorValue<'cyan'> = [cyanLight, cyanDark];
+const cyan: ColorValue<'cyan'> = [cyanLight, cyanDark]
 
 /**
  * @see https://www.radix-ui.com/colors/docs/palette-composition/scales#teal
  */
-const teal: ColorValue<'teal'> = [tealLight, tealDark];
+const teal: ColorValue<'teal'> = [tealLight, tealDark]
 
 /**
  * @see https://www.radix-ui.com/colors/docs/palette-composition/scales#jade
  */
-const jade: ColorValue<'jade'> = [jadeLight, jadeDark];
+const jade: ColorValue<'jade'> = [jadeLight, jadeDark]
 
 /**
  * @see https://www.radix-ui.com/colors/docs/palette-composition/scales#green
  */
-const green: ColorValue<'green'> = [greenLight, greenDark];
+const green: ColorValue<'green'> = [greenLight, greenDark]
 
 /**
  * @see https://www.radix-ui.com/colors/docs/palette-composition/scales#grass
  */
-const grass: ColorValue<'grass'> = [grassLight, grassDark];
+const grass: ColorValue<'grass'> = [grassLight, grassDark]
 
 /**
  * @see https://www.radix-ui.com/colors/docs/palette-composition/scales#orange
  */
-const orange: ColorValue<'orange'> = [orangeLight, orangeDark];
+const orange: ColorValue<'orange'> = [orangeLight, orangeDark]
 
 /**
  * @see https://www.radix-ui.com/colors/docs/palette-composition/scales#brown
  */
-const brown: ColorValue<'brown'> = [brownLight, brownDark];
+const brown: ColorValue<'brown'> = [brownLight, brownDark]
 
 // bright colors
 
 /**
  * @see https://www.radix-ui.com/colors/docs/palette-composition/scales#sky
  */
-const sky: ColorValue<'sky'> = [skyLight, skyDark];
+const sky: ColorValue<'sky'> = [skyLight, skyDark]
 
 /**
  * @see https://www.radix-ui.com/colors/docs/palette-composition/scales#mint
  */
-const mint: ColorValue<'mint'> = [mintLight, mintDark];
+const mint: ColorValue<'mint'> = [mintLight, mintDark]
 
 /**
  * @see https://www.radix-ui.com/colors/docs/palette-composition/scales#lime
  */
-const lime: ColorValue<'lime'> = [limeLight, limeDark];
+const lime: ColorValue<'lime'> = [limeLight, limeDark]
 
 /**
  * @see https://www.radix-ui.com/colors/docs/palette-composition/scales#yellow
  */
-const yellow: ColorValue<'yellow'> = [yellowLight, yellowDark];
+const yellow: ColorValue<'yellow'> = [yellowLight, yellowDark]
 
 /**
  * @see https://www.radix-ui.com/colors/docs/palette-composition/scales#amber
  */
-const amber: ColorValue<'amber'> = [amberLight, amberDark];
+const amber: ColorValue<'amber'> = [amberLight, amberDark]
 
 // grays
 
 /**
  * @see https://www.radix-ui.com/colors/docs/palette-composition/scales#gray
  */
-const gray: ColorValue<'gray'> = [grayLight, grayDark];
+const gray: ColorValue<'gray'> = [grayLight, grayDark]
 
 /**
  * @see https://www.radix-ui.com/colors/docs/palette-composition/scales#mauve
  */
-const mauve: ColorValue<'mauve'> = [mauveLight, mauveDark];
+const mauve: ColorValue<'mauve'> = [mauveLight, mauveDark]
 
 /**
  * @see https://www.radix-ui.com/colors/docs/palette-composition/scales#slate
  */
-const slate: ColorValue<'slate'> = [slateLight, slateDark];
+const slate: ColorValue<'slate'> = [slateLight, slateDark]
 
 /**
  * @see https://www.radix-ui.com/colors/docs/palette-composition/scales#sage
  */
-const sage: ColorValue<'sage'> = [sageLight, sageDark];
+const sage: ColorValue<'sage'> = [sageLight, sageDark]
 
 /**
  * @see https://www.radix-ui.com/colors/docs/palette-composition/scales#olive
  */
-const olive: ColorValue<'olive'> = [oliveLight, oliveDark];
+const olive: ColorValue<'olive'> = [oliveLight, oliveDark]
 
 /**
  * @see https://www.radix-ui.com/colors/docs/palette-composition/scales#sand
  */
-const sand: ColorValue<'sand'> = [sandLight, sandDark];
+const sand: ColorValue<'sand'> = [sandLight, sandDark]
 
 // metals
 
 /**
  * @see https://www.radix-ui.com/colors/docs/palette-composition/scales#gold
  */
-const gold: ColorValue<'gold'> = [goldLight, goldDark];
+const gold: ColorValue<'gold'> = [goldLight, goldDark]
 
 /**
  * @see https://www.radix-ui.com/colors/docs/palette-composition/scales#bronze
  */
-const bronze: ColorValue<'bronze'> = [bronzeLight, bronzeDark];
+const bronze: ColorValue<'bronze'> = [bronzeLight, bronzeDark]
 
 /** Alpha colors */
-const grayA: ColorValue<'grayA'> = [grayALight, grayDarkA];
-const mauveA: ColorValue<'mauveA'> = [mauveALight, mauveDarkA];
-const slateA: ColorValue<'slateA'> = [slateALight, slateDarkA];
-const sageA: ColorValue<'sageA'> = [sageALight, sageDarkA];
-const oliveA: ColorValue<'oliveA'> = [oliveALight, oliveDarkA];
-const sandA: ColorValue<'sandA'> = [sandALight, sandDarkA];
-const tomatoA: ColorValue<'tomatoA'> = [tomatoALight, tomatoDarkA];
-const redA: ColorValue<'redA'> = [redALight, redDarkA];
-const rubyA: ColorValue<'rubyA'> = [rubyALight, rubyDarkA];
-const crimsonA: ColorValue<'crimsonA'> = [crimsonALight, crimsonDarkA];
-const pinkA: ColorValue<'pinkA'> = [pinkALight, pinkDarkA];
-const plumA: ColorValue<'plumA'> = [plumALight, plumDarkA];
-const purpleA: ColorValue<'purpleA'> = [purpleALight, purpleDarkA];
-const violetA: ColorValue<'violetA'> = [violetALight, violetDarkA];
-const irisA: ColorValue<'irisA'> = [irisALight, irisDarkA];
-const indigoA: ColorValue<'indigoA'> = [indigoALight, indigoDarkA];
-const blueA: ColorValue<'blueA'> = [blueALight, blueDarkA];
-const cyanA: ColorValue<'cyanA'> = [cyanALight, cyanDarkA];
-const tealA: ColorValue<'tealA'> = [tealALight, tealDarkA];
-const jadeA: ColorValue<'jadeA'> = [jadeALight, jadeDarkA];
-const greenA: ColorValue<'greenA'> = [greenALight, greenDarkA];
-const grassA: ColorValue<'grassA'> = [grassALight, grassDarkA];
-const orangeA: ColorValue<'orangeA'> = [orangeALight, orangeDarkA];
-const brownA: ColorValue<'brownA'> = [brownALight, brownDarkA];
-const skyA: ColorValue<'skyA'> = [skyALight, skyDarkA];
-const mintA: ColorValue<'mintA'> = [mintALight, mintDarkA];
-const limeA: ColorValue<'limeA'> = [limeALight, limeDarkA];
-const yellowA: ColorValue<'yellowA'> = [yellowALight, yellowDarkA];
-const amberA: ColorValue<'amberA'> = [amberALight, amberDarkA];
-const goldA: ColorValue<'goldA'> = [goldALight, goldDarkA];
-const bronzeA: ColorValue<'bronzeA'> = [bronzeALight, bronzeDarkA];
+const grayA: ColorValue<'grayA'> = [grayALight, grayDarkA]
+const mauveA: ColorValue<'mauveA'> = [mauveALight, mauveDarkA]
+const slateA: ColorValue<'slateA'> = [slateALight, slateDarkA]
+const sageA: ColorValue<'sageA'> = [sageALight, sageDarkA]
+const oliveA: ColorValue<'oliveA'> = [oliveALight, oliveDarkA]
+const sandA: ColorValue<'sandA'> = [sandALight, sandDarkA]
+const tomatoA: ColorValue<'tomatoA'> = [tomatoALight, tomatoDarkA]
+const redA: ColorValue<'redA'> = [redALight, redDarkA]
+const rubyA: ColorValue<'rubyA'> = [rubyALight, rubyDarkA]
+const crimsonA: ColorValue<'crimsonA'> = [crimsonALight, crimsonDarkA]
+const pinkA: ColorValue<'pinkA'> = [pinkALight, pinkDarkA]
+const plumA: ColorValue<'plumA'> = [plumALight, plumDarkA]
+const purpleA: ColorValue<'purpleA'> = [purpleALight, purpleDarkA]
+const violetA: ColorValue<'violetA'> = [violetALight, violetDarkA]
+const irisA: ColorValue<'irisA'> = [irisALight, irisDarkA]
+const indigoA: ColorValue<'indigoA'> = [indigoALight, indigoDarkA]
+const blueA: ColorValue<'blueA'> = [blueALight, blueDarkA]
+const cyanA: ColorValue<'cyanA'> = [cyanALight, cyanDarkA]
+const tealA: ColorValue<'tealA'> = [tealALight, tealDarkA]
+const jadeA: ColorValue<'jadeA'> = [jadeALight, jadeDarkA]
+const greenA: ColorValue<'greenA'> = [greenALight, greenDarkA]
+const grassA: ColorValue<'grassA'> = [grassALight, grassDarkA]
+const orangeA: ColorValue<'orangeA'> = [orangeALight, orangeDarkA]
+const brownA: ColorValue<'brownA'> = [brownALight, brownDarkA]
+const skyA: ColorValue<'skyA'> = [skyALight, skyDarkA]
+const mintA: ColorValue<'mintA'> = [mintALight, mintDarkA]
+const limeA: ColorValue<'limeA'> = [limeALight, limeDarkA]
+const yellowA: ColorValue<'yellowA'> = [yellowALight, yellowDarkA]
+const amberA: ColorValue<'amberA'> = [amberALight, amberDarkA]
+const goldA: ColorValue<'goldA'> = [goldALight, goldDarkA]
+const bronzeA: ColorValue<'bronzeA'> = [bronzeALight, bronzeDarkA]
 
 /**
  * rename color variable
@@ -413,26 +413,26 @@ export function rename<K extends string>(color: Color<K>) {
       return Object.entries(color).reduce((obj, [key, value]) => {
         obj[next[key as K]] = (value as ColorValue<string>).map((mode) => {
           return Object.entries(mode).reduce((_mode, [, value], index) => {
-            _mode[`${next[key as K]}${index + 1}`] = value;
-            return _mode;
-          }, {} as Record<string, string>);
-        }) as any;
-        return obj;
-      }, {} as Color<V>);
+            _mode[`${next[key as K]}${index + 1}`] = value
+            return _mode
+          }, {} as Record<string, string>)
+        }) as any
+        return obj
+      }, {} as Color<V>)
     },
-  };
+  }
 }
 
 interface BuildOptions<O extends boolean> {
-  overlay?: O;
-  selector?: 'attribute' | 'class';
+  overlay?: O
+  selector?: 'attribute' | 'class'
 }
 
 interface BuildResult<A extends string, O extends boolean> {
   colors:
     & ColorsResult<A>
-    & (O extends true | undefined ? ColorsOverlayResult : unknown);
-  preflight: Preflight;
+    & (O extends true | undefined ? ColorsOverlayResult : unknown)
+  preflight: Preflight
 }
 
 /**
@@ -454,25 +454,25 @@ function colorx<N extends string>(color: Color<N>) {
         build: <O extends boolean = true>(
           options: BuildOptions<O> = {},
         ): BuildResult<A, O> => {
-          const { overlay = true, selector = 'attribute' } = options;
+          const { overlay = true, selector = 'attribute' } = options
 
           const aliasentries = Object.entries(alias) as [
             string,
             string | string[],
-          ][];
+          ][]
 
           const colorobject = (
             callback: {
-              key: (i: number) => string;
-              value: (i: number) => string;
+              key: (i: number) => string
+              value: (i: number) => string
             },
           ) => {
-            const value: Record<string, string> = {};
+            const value: Record<string, string> = {}
             for (let i = 1; i <= 12; i++) {
-              value[callback.key(i)] = callback.value(i);
+              value[callback.key(i)] = callback.value(i)
             }
-            return value;
-          };
+            return value
+          }
 
           return {
             colors: {
@@ -480,8 +480,8 @@ function colorx<N extends string>(color: Color<N>) {
                 object[name as A] = colorobject({
                   key: i => `${i}`,
                   value: i => `rgb(var(--${name}-${i}))`,
-                });
-                return object;
+                })
+                return object
               }, {} as ColorsResult<A>),
               ...((overlay
                 ? ({
@@ -519,27 +519,27 @@ function colorx<N extends string>(color: Color<N>) {
                 : {}) as any),
             } as any,
             preflight: (() => {
-              let css = '';
+              let css = ''
 
               const addBase = (
                 record: Record<string, Record<string, string>>,
               ) => {
-                let _css = '';
+                let _css = ''
                 for (const key in record) {
-                  const value = record[key];
-                  _css += `${key} {`;
-                  for (const _key in value) _css += ` ${_key}: ${value[_key]};`;
-                  _css += '}';
+                  const value = record[key]
+                  _css += `${key} {`
+                  for (const _key in value) _css += ` ${_key}: ${value[_key]};`
+                  _css += '}'
                 }
-                css += `${_css}`;
-              };
+                css += `${_css}`
+              }
 
               const format = (hex: string) => {
-                hex = hex.replace(/#/g, '');
+                hex = hex.replace(/#/g, '')
                 return `${Number.parseInt(hex.substring(0, 2), 16)} ${
                   Number.parseInt(hex.substring(2, 4), 16)
-                } ${Number.parseInt(hex.substring(4, 6), 16)}`;
-              };
+                } ${Number.parseInt(hex.substring(4, 6), 16)}`
+              }
 
               const convert = <T extends string>(
                 name: T,
@@ -548,53 +548,53 @@ function colorx<N extends string>(color: Color<N>) {
                 return (Object.entries(radix) as [string, string][]).reduce(
                   (object, [key, value]) => {
                     object[`--${name}-${key.replace(/\D/g, '') as Shade}`] =
-                      format(value);
-                    return object;
+                      format(value)
+                    return object
                   },
                   {} as CustomColorObject<T>,
-                );
-              };
+                )
+              }
 
-              const LIGHT: CustomColorObject<string> = {};
-              const DARK: CustomColorObject<string> = {};
-
-              (Object.entries(color) as [string, ColorValue<string>][]).forEach(
-                ([name, [light, dark]]) => {
-                  Object.assign(LIGHT, convert(name, light));
-                  Object.assign(DARK, convert(name, dark));
-                },
-              );
+              const LIGHT: CustomColorObject<string> = {}
+              const DARK: CustomColorObject<string> = {}
+              ;(Object.entries(color) as [string, ColorValue<string>][])
+                .forEach(
+                  ([name, [light, dark]]) => {
+                    Object.assign(LIGHT, convert(name, light))
+                    Object.assign(DARK, convert(name, dark))
+                  },
+                )
 
               const SELECTOR = {
                 theme: (value: string) => {
                   if (selector === 'attribute') {
-                    return `[data-theme="${value}"]`;
+                    return `[data-theme="${value}"]`
                   }
                   if (selector === 'class') {
-                    return `.${value}`;
+                    return `.${value}`
                   }
-                  console.log('ERROR : invalid theme selector');
+                  console.log('ERROR : invalid theme selector')
                 },
                 alias: (name: string, value: string) => {
                   if (selector === 'attribute') {
-                    return `[data-alias-${name}="${value}"]`;
+                    return `[data-alias-${name}="${value}"]`
                   }
                   if (selector === 'class') {
-                    return `.alias-${name}-${value}`;
+                    return `.alias-${name}-${value}`
                   }
-                  console.log('ERROR : invalid alias selector');
+                  console.log('ERROR : invalid alias selector')
                 },
-              };
+              }
 
               addBase({
                 [`:root, ${SELECTOR.theme('light')}`]: LIGHT,
                 [`${SELECTOR.theme('dark')}`]: DARK,
-              });
+              })
 
               aliasentries.forEach(([name, color]) => {
                 if (!name.match(/^[a-z0-9]*$/i)) {
-                  console.log(`ERROR : invalid ${name} alias`);
-                  return;
+                  console.log(`ERROR : invalid ${name} alias`)
+                  return
                 }
 
                 if (Array.isArray(color)) {
@@ -609,17 +609,17 @@ function colorx<N extends string>(color: Color<N>) {
                         key: i => `--${name}-${i}`,
                         value: i => `var(--${value}-${i})`,
                       }),
-                    });
-                  });
+                    })
+                  })
                 } else {
                   addBase({
                     ':root': colorobject({
                       key: i => `--${name}-${i}`,
                       value: i => `var(--${color}-${i})`,
                     }),
-                  });
+                  })
                 }
-              });
+              })
 
               if (overlay) {
                 addBase({
@@ -649,18 +649,18 @@ function colorx<N extends string>(color: Color<N>) {
                     '--white-11': whiteA.whiteA11,
                     '--white-12': whiteA.whiteA12,
                   },
-                });
+                })
               }
 
               return {
                 getCSS: () => css,
-              };
+              }
             })(),
-          };
+          }
         },
-      };
+      }
     },
-  };
+  }
 }
 
 export const radix = colorx({
@@ -681,7 +681,7 @@ export const radix = colorx({
     danger: 'red',
     details: 'gray',
   })
-  .build({ selector: 'class' });
+  .build({ selector: 'class' })
 
 const proseStyles = {
   'h1, h2, h3, h4, h5, h6': {
@@ -734,25 +734,25 @@ const proseStyles = {
   'td': {
     'border-bottom-color': radix.colors.neutral[6],
   },
-};
+}
 
 export default defineConfig({
   content: { pipeline: { include: ['./src/**/*.{ts,tsx}'] } },
   safelist: (() => {
     const responsive = (...classNames: string[]) => {
-      const result: string[] = [];
+      const result: string[] = []
       for (const className of classNames) {
-        result.push(className);
+        result.push(className)
         for (const screen of ['sm', 'md', 'lg', 'xl', '2xl']) {
-          result.push(`${screen}:${className}`);
+          result.push(`${screen}:${className}`)
         }
       }
-      return result;
-    };
+      return result
+    }
 
     const spacing = (
       $: string,
-    ) => [`${$}-1`, `${$}-2`, `${$}-3`, `${$}-5`, `${$}-8`];
+    ) => [`${$}-1`, `${$}-2`, `${$}-3`, `${$}-5`, `${$}-8`]
 
     return [
       ...responsive(
@@ -771,7 +771,7 @@ export default defineConfig({
         ...spacing('pb'),
         ...spacing('pl'),
       ),
-    ];
+    ]
   })(),
   theme: {
     colors: {
@@ -800,4 +800,4 @@ export default defineConfig({
     }),
   ],
   transformers: [transformerDirectives(), transformerVariantGroup()],
-});
+})

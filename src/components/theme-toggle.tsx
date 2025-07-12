@@ -1,12 +1,12 @@
-import { useCallback } from 'react';
-import { useTheme } from './theme-provider';
+import { useCallback } from 'react'
+import { useTheme } from './theme-provider'
 
 export function ThemeToggle() {
-  const { setTheme, theme } = useTheme();
+  const { setTheme, theme } = useTheme()
 
   const toggleTheme = useCallback(() => {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
-  }, [theme, setTheme]);
+    setTheme(theme === 'dark' ? 'light' : 'dark')
+  }, [theme, setTheme])
 
   return (
     <button
@@ -35,5 +35,5 @@ export function ThemeToggle() {
       </svg>
       <span className='sr-only'>Toggle theme</span>
     </button>
-  );
+  )
 }

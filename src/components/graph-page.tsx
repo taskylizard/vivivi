@@ -1,82 +1,80 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { useLocation } from 'wouter';
-import { GRAPH_OPTIONS } from '../data';
-import GraphViewer from './graph';
-import { NodePropertiesPanel } from './graph/node-properties-panel';
-import type { Graph, Node } from './graph/types';
-import { useToggleReactScan } from './react-scan';
-import { ThemeToggle } from './theme-toggle';
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import { Link, useLocation } from 'wouter'
+import { GRAPH_OPTIONS } from '../data'
+import GraphViewer from './graph'
+import { NodePropertiesPanel } from './graph/node-properties-panel'
+import type { Graph, Node } from './graph/types'
+import { useToggleReactScan } from './react-scan'
+import { ThemeToggle } from './theme-toggle'
 
 const useGraphData = (selectedGraph: string | null) => {
-  const [data, setData] = useState<Graph | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [data, setData] = useState<Graph | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    if (!selectedGraph) return;
+    if (!selectedGraph) return
     const fetchData = async () => {
       try {
-        await new Promise((resolve) => setTimeout(resolve, 1_000));
-        const graph = GRAPH_OPTIONS.find((g) => g.key === selectedGraph);
-        if (!graph) throw new Error('Graph not found');
-        setData(graph.data as unknown as Graph);
+        await new Promise((resolve) => setTimeout(resolve, 1_000))
+        const graph = GRAPH_OPTIONS.find((g) => g.key === selectedGraph)
+        if (!graph) throw new Error('Graph not found')
+        setData(graph.data as unknown as Graph)
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Unknown error');
+        setError(err instanceof Error ? err.message : 'Unknown error')
       } finally {
-        setLoading(false);
+        setLoading(false)
       }
-    };
-    setLoading(true);
-    setError(null);
-    setData(null);
-    fetchData();
-  }, [selectedGraph]);
+    }
+    setLoading(true)
+    setError(null)
+    setData(null)
+    fetchData()
+  }, [selectedGraph])
 
-  return { data, loading, error };
-};
+  return { data, loading, error }
+}
 
 const GraphPage: React.FC<{ params: { graphId: string } }> = ({ params }) => {
-  const { data, loading, error } = useGraphData(params.graphId);
-  const [showInfo, setShowInfo] = useState(true);
+  const { data, loading, error } = useGraphData(params.graphId)
+  const [showInfo, setShowInfo] = useState(true)
   const [activeTab, setActiveTab] = useState<'info' | 'developer' | 'graphs'>(
     'info',
-  );
-  const [selectedNode, setSelectedNode] = useState<Node | null>(null);
+  )
+  const [selectedNode, setSelectedNode] = useState<Node | null>(null)
 
   // PIXI.js options for developer tab
   const [pixiPreference, setPixiPreference] = useState<'webgl' | 'webgpu'>(
     'webgl',
-  );
+  )
   const [powerPreference, setPowerPreference] = useState<
     'high-performance' | 'low-power'
-  >('high-performance');
+  >('high-performance')
   const [failIfMajorPerformanceCaveat, setFailIfMajorPerformanceCaveat] =
-    useState(false);
+    useState(false)
 
-  const [enabled, setEnabled] = useState(true);
+  const [enabled, setEnabled] = useState(true)
   const { toggle } = useToggleReactScan({
     mode: 'controlled',
     enabled,
     setEnabled,
-  });
+  })
 
-  const [, setLocation] = useLocation();
+  const [, setLocation] = useLocation()
 
-  const graphRef = useRef<{ recenter: () => void }>(null);
-
-  const [shouldCrash, setShouldCrash] = useState(false);
+  const [shouldCrash, setShouldCrash] = useState(false)
 
   const handleCrash = () => {
-    setShouldCrash(true);
-  };
+    setShouldCrash(true)
+  }
 
   if (shouldCrash) {
-    throw new Error('💥 Intentional crash triggered from developer tab!');
+    throw new Error('💥 Intentional crash triggered from developer tab!')
   }
 
   // avoid unnecessary re-renders
-  const memoizedNodes = useMemo(() => data?.nodes || [], [data]);
-  const memoizedLinks = useMemo(() => data?.links || [], [data]);
+  const memoizedNodes = useMemo(() => data?.nodes || [], [data])
+  const memoizedLinks = useMemo(() => data?.links || [], [data])
 
   // Memoize the config object to prevent unnecessary re-renders
   const graphConfig = useMemo(
@@ -86,17 +84,17 @@ const GraphPage: React.FC<{ params: { graphId: string } }> = ({ params }) => {
       failIfMajorPerformanceCaveat,
     }),
     [pixiPreference, powerPreference, failIfMajorPerformanceCaveat],
-  );
+  )
 
   const handleNodeClick = useCallback(
     (nodeId: string) => {
-      const node = memoizedNodes.find((n) => n.id === nodeId);
+      const node = memoizedNodes.find((n) => n.id === nodeId)
       if (node) {
-        setSelectedNode(node);
+        setSelectedNode(node)
       }
     },
     [memoizedNodes],
-  );
+  )
 
   if (loading) {
     return (
@@ -108,26 +106,42 @@ const GraphPage: React.FC<{ params: { graphId: string } }> = ({ params }) => {
           </div>
         </div>
       </div>
-    );
+    )
   }
 
   if (error) {
     return (
-      <div className='p-4 h-screen flex items-center justify-center prose dark:prose-invert bg-neutral-1 text-neutral-11 font-sans'>
-        <div className='text-center bg-neutral-3 p-8 rounded-lg border'>
-          <h2 className='text-xl font-bold mb-2'>Error loading graph</h2>
-          <p className='text-danger-11'>{error}</p>
+      <div className='fixed inset-0 flex items-center justify-center p-4 bg-neutral-1/80 backdrop-blur-sm'>
+        <div className='w-full max-w-2xl p-6 bg-neutral-1 border border-neutral-6 rounded-lg shadow-lg'>
+          <div className='space-y-4'>
+            <h2 className='text-2xl font-bold text-danger-11'>Unknown graph</h2>
+
+            <div className='space-y-2'>
+              <p className='text-sm text-neutral-11'>
+                Looks like you are trying to view an unknown graph. Please
+                select a graph from the dropdown menu.
+              </p>
+            </div>
+
+            <div className='flex gap-4 mt-6'>
+              <Link
+                to='/'
+                className='px-4 py-2 text-sm font-medium text-neutral-11 bg-neutral-3 rounded-md hover:bg-neutral-4 transition-colors'
+              >
+                Take me back home
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
-    );
+    )
   }
 
-  if (!data) return null;
+  if (!data) return null
 
   return (
     <div className='min-h-screen'>
       <GraphViewer
-        ref={graphRef}
         nodes={memoizedNodes}
         links={memoizedLinks}
         onNodeClick={handleNodeClick}
@@ -355,7 +369,7 @@ const GraphPage: React.FC<{ params: { graphId: string } }> = ({ params }) => {
         </button>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default GraphPage;
+export default GraphPage

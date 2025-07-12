@@ -1,13 +1,13 @@
-import { type FallbackProps, useErrorBoundary } from 'react-error-boundary';
-import { Link } from 'wouter';
+import { type FallbackProps, useErrorBoundary } from 'react-error-boundary'
+import { Link } from 'wouter'
 
 type Props = {
-  error?: string;
-  onReturn?: () => void;
-};
+  error?: string
+  onReturn?: () => void
+}
 
 function UnhandledError({ error, onReturn }: Props) {
-  const { resetBoundary } = useErrorBoundary();
+  const { resetBoundary } = useErrorBoundary()
 
   return (
     <div className='fixed inset-0 flex items-center justify-center p-4 bg-neutral-1/80 backdrop-blur-sm'>
@@ -59,7 +59,7 @@ function UnhandledError({ error, onReturn }: Props) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 export function FallbackRender({ error, resetErrorBoundary }: FallbackProps) {
@@ -67,5 +67,5 @@ export function FallbackRender({ error, resetErrorBoundary }: FallbackProps) {
     <div className='h-screen'>
       <UnhandledError error={error.toString()} onReturn={resetErrorBoundary} />
     </div>
-  );
+  )
 }

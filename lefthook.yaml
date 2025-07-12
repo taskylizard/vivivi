@@ -1,0 +1,9 @@
+pre-commit:
+  parallel: true
+  jobs:
+    - run: pnpm typecheck
+      glob: '*.{js,ts,jsx,tsx}'
+    - run: pnpm format {staged_files}
+      glob: '*.{js,ts,jsx,tsx,json,md,mdx,css,html,vue,yaml,toml}'
+      exclude: 'pnpm-lock.yaml|pnpm-workspace.yaml|decompilation-vercel-checkpoint|vercel-fal-image-generator'
+      stage_fixed: true

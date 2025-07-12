@@ -1,16 +1,16 @@
-import { X } from 'lucide-react';
-import type { Node } from './types';
+import { X } from 'lucide-react'
+import type { Node } from './types'
 
 interface NodePropertiesPanelProps {
-  node: Node | null;
-  onClose: () => void;
+  node: Node | null
+  onClose: () => void
 }
 
 export const NodePropertiesPanel: React.FC<NodePropertiesPanelProps> = ({
   node,
   onClose,
 }) => {
-  if (!node) return null;
+  if (!node) return null
 
   return (
     <div className='fixed top-4 left-4 z-50 bg-neutral-3/90 backdrop-blur-md border border-neutral-7 rounded-xl p-4 min-w-80 max-w-md font-sans'>
@@ -94,5 +94,5 @@ export const NodePropertiesPanel: React.FC<NodePropertiesPanelProps> = ({
         </details>
       </div>
     </div>
-  );
-};
+  )
+}

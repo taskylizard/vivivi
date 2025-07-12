@@ -1,4 +1,4 @@
-import { Link } from 'wouter';
+import { Link } from 'wouter'
 
 export default function NotFoundPage() {
   return (
@@ -24,5 +24,5 @@ export default function NotFoundPage() {
         </div>
       </div>
     </div>
-  );
+  )
 }

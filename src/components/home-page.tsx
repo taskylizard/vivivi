@@ -1,10 +1,10 @@
-import { TriangleAlert } from 'lucide-react';
-import { useLocation } from 'wouter';
-import { GRAPH_OPTIONS } from '../data';
-import { ThemeToggle } from './theme-toggle';
+import { TriangleAlert } from 'lucide-react'
+import { useLocation } from 'wouter'
+import { GRAPH_OPTIONS } from '../data'
+import { ThemeToggle } from './theme-toggle'
 
 const HomePage: React.FC = () => {
-  const [, setLocation] = useLocation();
+  const [, setLocation] = useLocation()
 
   return (
     <div className='fixed inset-0 z-50 flex items-center justify-center'>
@@ -71,7 +71,7 @@ const HomePage: React.FC = () => {
         </p>
       </footer>
     </div>
-  );
-};
+  )
+}
 
-export default HomePage;
+export default HomePage

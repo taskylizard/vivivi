@@ -1,56 +1,56 @@
-import type { Root } from 'mdast';
-import { remark } from 'remark';
-import { visit } from 'unist-util-visit';
+import type { Root } from 'mdast'
+import { remark } from 'remark'
+import { visit } from 'unist-util-visit'
 
 export type Input = {
-  url: string;
-  title: string;
-  content: string;
-};
+  url: string
+  title: string
+  content: string
+}
 
-type Url = string;
+type Url = string
 
 type Node = {
-  id: number;
-  text: string;
-  url: Url;
-};
+  id: number
+  text: string
+  url: Url
+}
 
-type Source = string;
-type Target = string;
+type Source = string
+type Target = string
 
 type Edge = {
-  source: Source;
-  target: Target;
-};
+  source: Source
+  target: Target
+}
 
 type UrlToIDMap = {
-  [key: Url]: string;
-};
+  [key: Url]: string
+}
 
 type Connections = {
-  [key: string]: boolean;
-};
+  [key: string]: boolean
+}
 
 export class Graph {
-  private _nodes: Node[];
-  private _edges: Edge[];
-  private urlToIDMap: UrlToIDMap;
-  private connections: Connections;
+  private _nodes: Node[]
+  private _edges: Edge[]
+  private urlToIDMap: UrlToIDMap
+  private connections: Connections
 
   constructor(postMarkdowns: Input[]) {
-    this._nodes = [];
-    this._edges = [];
-    this.urlToIDMap = this.buildUrlToID(postMarkdowns);
-    this.connections = {};
+    this._nodes = []
+    this._edges = []
+    this.urlToIDMap = this.buildUrlToID(postMarkdowns)
+    this.connections = {}
   }
 
   get nodes() {
-    return this._nodes;
+    return this._nodes
   }
 
   get edges() {
-    return this._edges;
+    return this._edges
   }
 
   addNode({ url, title }: Input) {
@@ -58,21 +58,21 @@ export class Graph {
       url,
       text: title,
       id: this._nodes.length,
-    });
+    })
   }
 
   addEdge(sourceUrl: Url, targetUrl: Url) {
-    const source = this.urlToIDMap[sourceUrl];
-    const target = this.urlToIDMap[targetUrl];
+    const source = this.urlToIDMap[sourceUrl]
+    const target = this.urlToIDMap[targetUrl]
 
-    if (this.hasConnection(source, target)) return;
+    if (this.hasConnection(source, target)) return
 
     this._edges.push({
       source,
       target,
-    });
+    })
 
-    this.updateConnections(source, target);
+    this.updateConnections(source, target)
   }
 
   private buildUrlToID(postMarkdowns: Input[]) {
@@ -82,46 +82,46 @@ export class Graph {
         [url]: index.toString(),
       }),
       {},
-    );
+    )
   }
 
   private updateConnections(source: string, target: string) {
-    this.connections[`${source}-${target}`] = true;
+    this.connections[`${source}-${target}`] = true
   }
 
   private hasConnection(source: string, target: string) {
     return (
       this.connections[`${source}-${target}`] ||
       this.connections[`${target}-${source}`]
-    );
+    )
   }
 }
 
-type AddEdge = (url: string) => boolean;
+type AddEdge = (url: string) => boolean
 
 function buildLink(input: Input, graph: Graph, addEdge: AddEdge = () => true) {
-  graph.addNode(input);
+  graph.addNode(input)
 
   remark()
     .use(() => (mdast: Root) => {
       visit(mdast, 'link', (node) => {
         if (addEdge(node.url)) {
-          graph.addEdge(input.url, node.url);
+          graph.addEdge(input.url, node.url)
         }
-      });
+      })
     })
-    .process(input.content);
+    .process(input.content)
 }
 
 export function createGraph(
   inputs: Input[],
   isAbleToAddEdge: AddEdge = () => true,
 ) {
-  const graph = new Graph(inputs);
+  const graph = new Graph(inputs)
 
   for (const postMarkdown of inputs) {
-    buildLink(postMarkdown, graph, isAbleToAddEdge);
+    buildLink(postMarkdown, graph, isAbleToAddEdge)
   }
 
-  return graph;
+  return graph
 }

@@ -4,68 +4,68 @@ import {
   useCallback,
   useEffect,
   useState,
-} from 'react';
+} from 'react'
 
 type UseToggleReactScanControlled = {
-  mode: 'controlled';
-  enabled: boolean;
-  setEnabled: Dispatch<SetStateAction<boolean>>;
-};
+  mode: 'controlled'
+  enabled: boolean
+  setEnabled: Dispatch<SetStateAction<boolean>>
+}
 
 type UseToggleReactScanUncontrolled = {
-  mode?: 'uncontrolled';
-};
+  mode?: 'uncontrolled'
+}
 
 type UseToggleReactScanOptions =
   | UseToggleReactScanControlled
-  | UseToggleReactScanUncontrolled;
+  | UseToggleReactScanUncontrolled
 
-const STORAGE_KEY = 'react-scan-enabled';
+const STORAGE_KEY = 'react-scan-enabled'
 
 export const useToggleReactScan = (
   options: UseToggleReactScanOptions = { mode: 'uncontrolled' },
 ) => {
-  const isControlled = options.mode === 'controlled';
+  const isControlled = options.mode === 'controlled'
 
   const [internalEnabled, setInternalEnabled] = useState(() => {
-    if (typeof window === 'undefined') return false;
-    return localStorage.getItem(STORAGE_KEY) === 'true';
-  });
+    if (typeof window === 'undefined') return false
+    return localStorage.getItem(STORAGE_KEY) === 'true'
+  })
 
-  const enabled = isControlled ? options.enabled : internalEnabled;
+  const enabled = isControlled ? options.enabled : internalEnabled
   const setEnabled: Dispatch<SetStateAction<boolean>> = isControlled
     ? options.setEnabled
-    : setInternalEnabled;
+    : setInternalEnabled
 
   const applyToDOM = useCallback((on: boolean) => {
-    const root = document.getElementById('react-scan-root');
+    const root = document.getElementById('react-scan-root')
     if (root) {
-      root.style.display = on ? '' : 'none';
+      root.style.display = on ? '' : 'none'
       const input = root.shadowRoot?.querySelector<HTMLInputElement>(
         ".react-scan-toggle input[type='checkbox']",
-      );
-      if (input && input.checked !== on) input.click();
+      )
+      if (input && input.checked !== on) input.click()
     }
-  }, []);
+  }, [])
 
   useEffect(() => {
-    applyToDOM(enabled);
+    applyToDOM(enabled)
     if (!isControlled && typeof window !== 'undefined') {
-      localStorage.setItem(STORAGE_KEY, String(enabled));
+      localStorage.setItem(STORAGE_KEY, String(enabled))
     }
-  }, [enabled, applyToDOM, isControlled]);
+  }, [enabled, applyToDOM, isControlled])
 
   const enable = useCallback(() => {
-    setEnabled(true);
-  }, [setEnabled]);
+    setEnabled(true)
+  }, [setEnabled])
 
   const disable = useCallback(() => {
-    setEnabled(false);
-  }, [setEnabled]);
+    setEnabled(false)
+  }, [setEnabled])
 
   const toggle = useCallback(() => {
-    setEnabled((prev) => !prev);
-  }, [setEnabled]);
+    setEnabled((prev) => !prev)
+  }, [setEnabled])
 
-  return { enabled, enable, disable, toggle, setEnabled };
-};
+  return { enabled, enable, disable, toggle, setEnabled }
+}
